@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Notes</string>
+    <string name="by_author">By\n Andrew Ershov</string>
+    <string name="notes_app">Notes App</string>
+    <string name="phrase_app">Life is too Fast don\'t forget anything\n just Note it!</string>
 </resources>
