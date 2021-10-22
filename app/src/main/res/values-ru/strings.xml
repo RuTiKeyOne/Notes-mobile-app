@@ -3,4 +3,9 @@
     <string name="app_name">Заметки</string>
     <string name="by_author">Разработчик\n Андрей Ершов</string>
     <string name="notes_app">Заметки</string>
+    <string name="phrase_app">Life is too Fast don\'t forget anything\n just Note it!</string>
+    <string name="title">Заголовок</string>
+    <string name="subtitle">Подзаголовок</string>
+    <string name="notes">Запись</string>
+    <string name="priority">Приоритет</string>
 </resources>

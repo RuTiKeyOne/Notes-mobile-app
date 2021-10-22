@@ -25,4 +25,10 @@ public class Notes {
     @ColumnInfo(name = "notes_priority")
     public String notesPriority;
 
+    public Notes(String notesTitle, String notesSubTitle, String notes, String notesDate) {
+        this.notesTitle = notesTitle;
+        this.notesSubTitle = notesSubTitle;
+        this.notes = notes;
+        this.notesDate = notesDate;
+    }
 }
