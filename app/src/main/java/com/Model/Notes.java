@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.Enum.PriorityLevel;
+
 @Entity(tableName = "notes_database")
 public class Notes {
 
@@ -23,12 +25,16 @@ public class Notes {
     public String notes;
 
     @ColumnInfo(name = "notes_priority")
-    public String notesPriority;
+    public PriorityLevel notesPriority;
 
-    public Notes(String notesTitle, String notesSubTitle, String notes, String notesDate) {
+    public Notes() {
+    }
+
+    public Notes(String notesTitle, String notesSubTitle, String notes, String notesDate, PriorityLevel priorityLevel) {
         this.notesTitle = notesTitle;
         this.notesSubTitle = notesSubTitle;
         this.notes = notes;
         this.notesDate = notesDate;
+        this.notesPriority = priorityLevel;
     }
 }

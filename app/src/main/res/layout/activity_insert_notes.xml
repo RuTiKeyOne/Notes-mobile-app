@@ -58,12 +58,12 @@
                     android:fontFamily="@font/product_sans_regular"/>
 
                 <ImageView
-                    android:id="@+id/greenPriority"
+                    android:id="@+id/redPriority"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/ic_done"
                     android:layout_margin="10dp"
-                    android:background="@drawable/green_shape"/>
+                    android:src="@drawable/ic_done"
+                    android:background="@drawable/red_shape"/>
 
                 <ImageView
                     android:id="@+id/yellowPriority"
@@ -73,11 +73,11 @@
                     android:background="@drawable/yellow_shape"/>
 
                 <ImageView
-                    android:id="@+id/redPriority"
+                    android:id="@+id/greenPriority"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_margin="10dp"
-                    android:background="@drawable/red_shape"/>
+                    android:background="@drawable/green_shape"/>
 
             </LinearLayout>
 

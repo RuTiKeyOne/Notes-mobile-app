@@ -15,17 +15,29 @@ import com.notes.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding mainBinding;
-
+    private NotesViewModel notesViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initializationViewComponents();
+        initializationComponents();
+        getAllNotes();
         addNewNoteClickBehaviour();
     }
 
     private void initializationViewComponents(){
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+    }
+
+    private void initializationComponents(){
+        notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
+    }
+
+    private void getAllNotes(){
+        notesViewModel.repository.getAllNotes().observe(this, notes -> {
+
+        });
     }
 
     private void addNewNoteClickBehaviour(){
