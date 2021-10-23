@@ -11,12 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/lightGrey"
-        tools:context="com.Activity.MainActivity">
+        tools:context="com.notes.Activity.MainActivity">
 
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/notesRecycleView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/newNotesButton"

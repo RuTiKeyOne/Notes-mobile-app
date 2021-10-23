@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Notes">
         <activity
-            android:name="com.Activity.UpdateNotesActivity"
+            android:name="notes.Activity.UpdateNotesActivity"
             android:exported="true" />
         <activity
-            android:name="com.Activity.InsertNotesActivity"
+            android:name="notes.Activity.InsertNotesActivity"
             android:exported="true"/>
         <activity
-            android:name="com.Activity.SplashScreen"
+            android:name="notes.Activity.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.Activity.MainActivity"
+            android:name="notes.Activity.MainActivity"
             android:exported="true" >
         </activity>
     </application>
