@@ -1,9 +1,11 @@
 package notes.Command.PriorityCommand.Child;
 
+import static notes.Utilities.TempDataAdapter.LOW_PRIORITY_KEY;
+
 import androidx.databinding.ViewDataBinding;
 
 import notes.Command.PriorityCommand.Parent.BasePriorityCommand;
-import notes.Enum.PriorityLevel;
+
 import com.notes.R;
 import com.notes.databinding.ActivityInsertNotesBinding;
 
@@ -20,7 +22,7 @@ public class LowPriorityCommand extends BasePriorityCommand {
     }
 
     @Override
-    public PriorityLevel getPriorityLevel() {
-        return PriorityLevel.LOW_PRIORITY;
+    public String getPriorityLevel() {
+        return LOW_PRIORITY_KEY;
     }
 }

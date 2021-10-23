@@ -7,7 +7,7 @@ import androidx.databinding.ViewDataBinding;
 
 public abstract class BaseAdapterCommand<T>{
 
-    public abstract void bindData(T data, ViewDataBinding dataBinding);
+    public abstract void bindItem(T data, ViewDataBinding dataBinding);
     public abstract ViewDataBinding getItemContainerBinding(LayoutInflater layoutInflater,
                                                             int idLayout, ViewGroup parent);
 }

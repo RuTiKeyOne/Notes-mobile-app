@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void getAllNotes() {
         notesViewModel.getAllNotes().observe(this, notes -> {
+            Log.d("log", "notes: " + notes.size());
             notesData.addAll(notes);
             notesAdapter.notifyDataSetChanged();
         });

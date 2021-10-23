@@ -6,13 +6,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.util.Log;
 
 import notes.Command.PriorityCommand.Child.HighPriorityCommand;
 import notes.Command.PriorityCommand.Child.LowPriorityCommand;
 import notes.Command.PriorityCommand.Child.MediumPriorityCommand;
 import notes.Command.PriorityCommand.Parent.BasePriorityCommand;
-import notes.Enum.PriorityLevel;
 import notes.Model.Notes;
 import notes.ViewModel.NotesViewModel;
 import com.notes.R;
@@ -25,7 +23,7 @@ public class InsertNotesActivity extends AppCompatActivity {
     private ActivityInsertNotesBinding insertBinding;
     private NotesViewModel notesViewModel;
     private BasePriorityCommand priorityCommand;
-    private PriorityLevel priorityLevel;
+    private String priorityLevel;
 
     private String title;
     private String subTitle;
@@ -47,7 +45,7 @@ public class InsertNotesActivity extends AppCompatActivity {
     private void initializationComponents() {
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
         priorityCommand = new HighPriorityCommand();
-        priorityLevel = PriorityLevel.HIGH_PRIORITY;
+        priorityLevel = priorityCommand.getPriorityLevel();
     }
 
     private void addChangePriorityLevel() {
@@ -97,6 +95,7 @@ public class InsertNotesActivity extends AppCompatActivity {
         note.setNotesSubTitle(subTitle);
         note.setNotes(notes);
         note.setNotesDate(getDate());
+        note.setNotesPriority(priorityLevel);
         return note;
     }
 

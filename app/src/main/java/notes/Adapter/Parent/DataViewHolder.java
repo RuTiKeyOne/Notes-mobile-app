@@ -19,6 +19,6 @@ public class DataViewHolder<DataBinding extends ViewDataBinding, Data> extends R
     }
 
     public void bindData(Data data){
-        adapterCommand.bindData(data, dataBinding);
+        adapterCommand.bindItem(data, dataBinding);
     }
 }

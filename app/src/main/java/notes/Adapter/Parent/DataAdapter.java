@@ -17,7 +17,7 @@ public class DataAdapter<TypeData , Data extends List<TypeData>> extends Recycle
 
     protected Data data;
     private LayoutInflater layoutInflater;
-    private BaseAdapterCommand adapterCommand;
+    protected BaseAdapterCommand adapterCommand;
     private int idLayout;
 
     public DataAdapter(Data data, BaseAdapterCommand adapterCommand, int idLayout) {
@@ -33,12 +33,14 @@ public class DataAdapter<TypeData , Data extends List<TypeData>> extends Recycle
         if (layoutInflater == null) {
             layoutInflater = LayoutInflater.from(parent.getContext());
         }
+
         return new DataViewHolder(adapterCommand.getItemContainerBinding(layoutInflater, idLayout, parent),
                 adapterCommand);
     }
 
     @Override
     public void onBindViewHolder(@NonNull DataViewHolder holder, int position) {
+
         holder.bindData(data.get(position));
     }
 
