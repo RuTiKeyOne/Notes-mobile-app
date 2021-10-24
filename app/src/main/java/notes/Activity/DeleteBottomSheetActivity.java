@@ -40,6 +40,7 @@ public class DeleteBottomSheetActivity{
     private void addOnYesClicked(){
         deleteBinding.deleteYes.setOnClickListener(v -> {
             deleteListener.onDeleteNote();
+            onDismissDeleteButtonSheet();
         });
     }
 

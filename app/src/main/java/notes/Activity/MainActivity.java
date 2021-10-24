@@ -5,7 +5,6 @@ import static notes.Utilities.TempDataViewModel.NOTE_INTENT_KEY;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 
@@ -15,24 +14,23 @@ import android.os.Bundle;
 import android.util.Log;
 
 import notes.Adapter.Child.NotesAdapter;
-import notes.Intefaces.NoteListener;
+import notes.Intefaces.EditNoteListener;
+import notes.Intefaces.OpenDetailBottomSheetListener;
 import notes.Model.Notes;
-import notes.Repository.NotesRepository;
 import notes.ViewModel.NotesViewModel;
 
 import com.notes.R;
-import com.notes.databinding.ActivityInsertNotesBinding;
 import com.notes.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class MainActivity extends AppCompatActivity implements NoteListener {
+public class MainActivity extends AppCompatActivity implements EditNoteListener, OpenDetailBottomSheetListener {
 
     private ActivityMainBinding mainBinding;
     private NotesViewModel notesViewModel;
     private NotesAdapter notesAdapter;
+    private DetailsBottomSheetActivity detailsActivity;
     private List<Notes> notesData = new ArrayList<>();
 
 
@@ -61,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements NoteListener {
     private void initializationComponents() {
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
         notesAdapter = new NotesAdapter(notesData, this);
+        detailsActivity = new DetailsBottomSheetActivity(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -86,4 +85,10 @@ public class MainActivity extends AppCompatActivity implements NoteListener {
         startActivity(updateIntent);
     }
 
+    @Override
+    public void onOpenSheet(Notes note) {
+        if(detailsActivity != null){
+            detailsActivity.onStartBottomSheetActivity(note);
+        }
+    }
 }

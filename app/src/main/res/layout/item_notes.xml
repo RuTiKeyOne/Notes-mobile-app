@@ -70,16 +70,6 @@
                     android:text="@{date}"
                     android:textColor="@color/black" />
 
-                <View
-                    android:id="@+id/noteEdit"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="end"
-                    android:layout_margin="5dp"
-                    android:backgroundTint="@color/black"
-                    android:background="@drawable/ic_edit" />
-
-
 
             </LinearLayout>
 

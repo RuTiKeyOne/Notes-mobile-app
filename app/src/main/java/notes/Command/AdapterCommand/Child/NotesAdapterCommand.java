@@ -4,8 +4,6 @@ import static notes.Utilities.TempDataAdapter.HIGH_PRIORITY_KEY;
 import static notes.Utilities.TempDataAdapter.LOW_PRIORITY_KEY;
 import static notes.Utilities.TempDataAdapter.MEDIUM_PRIORITY_KEY;
 
-import android.system.ErrnoException;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -17,7 +15,8 @@ import notes.Command.SetViewCommand.Child.SetHighPriorityCommand;
 import notes.Command.SetViewCommand.Child.SetLowPriorityCommand;
 import notes.Command.SetViewCommand.Child.SetMediumPriorityCommand;
 import notes.Command.SetViewCommand.Parent.BaseSetViewCommand;
-import notes.Intefaces.NoteListener;
+import notes.Intefaces.EditNoteListener;
+import notes.Intefaces.OpenDetailBottomSheetListener;
 import notes.Model.Notes;
 
 import com.notes.databinding.ItemNotesBinding;
@@ -26,7 +25,7 @@ public class NotesAdapterCommand extends BaseAdapterCommand<Notes> {
 
     private BaseSetViewCommand setViewCommand;
 
-    public NotesAdapterCommand(NoteListener listener) {
+    public NotesAdapterCommand(OpenDetailBottomSheetListener listener) {
         super(listener);
     }
 
@@ -51,7 +50,7 @@ public class NotesAdapterCommand extends BaseAdapterCommand<Notes> {
     }
 
     private void setOnClickBehaviour(ViewDataBinding dataBinding, Notes note){
-        getItemNotesBindingWithViewDataBinding(dataBinding).noteEdit.setOnClickListener(v -> listener.onNoteEdit(note));
+        getItemNotesBindingWithViewDataBinding(dataBinding).getRoot().setOnClickListener(v -> openListener.onOpenSheet(note));
     }
 
     private void setDataNote(Notes data, ViewDataBinding dataBinding) {

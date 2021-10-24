@@ -5,14 +5,15 @@ import android.view.ViewGroup;
 
 import androidx.databinding.ViewDataBinding;
 
-import notes.Intefaces.NoteListener;
+import notes.Intefaces.EditNoteListener;
+import notes.Intefaces.OpenDetailBottomSheetListener;
 
 public abstract class BaseAdapterCommand<T>{
 
-    protected NoteListener listener;
+    protected OpenDetailBottomSheetListener openListener;
 
-    public BaseAdapterCommand(NoteListener listener) {
-        this.listener = listener;
+    public BaseAdapterCommand(OpenDetailBottomSheetListener listener) {
+        this.openListener = listener;
     }
 
     public abstract void bindItem(T data, ViewDataBinding dataBinding);
