@@ -7,9 +7,9 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 
-import notes.Command.PriorityCommand.Child.HighPriorityCommand;
-import notes.Command.PriorityCommand.Child.LowPriorityCommand;
-import notes.Command.PriorityCommand.Child.MediumPriorityCommand;
+import notes.Command.PriorityCommand.Child.InsertPriorityCommand.HighInsertPriorityCommand;
+import notes.Command.PriorityCommand.Child.InsertPriorityCommand.LowInsertPriorityCommand;
+import notes.Command.PriorityCommand.Child.InsertPriorityCommand.MediumInsertPriorityCommand;
 import notes.Command.PriorityCommand.Parent.BasePriorityCommand;
 import notes.Model.Notes;
 import notes.ViewModel.NotesViewModel;
@@ -43,26 +43,26 @@ public class InsertNotesActivity extends AppCompatActivity {
 
     private void initializationComponents() {
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
-        priorityCommand = new HighPriorityCommand();
+        priorityCommand = new HighInsertPriorityCommand();
         priorityLevel = priorityCommand.getPriorityLevel();
     }
 
     private void addChangePriorityLevel() {
 
         insertBinding.redPriority.setOnClickListener(v -> {
-            priorityCommand = new HighPriorityCommand();
+            priorityCommand = new HighInsertPriorityCommand();
             priorityCommand.changePriorityView(insertBinding);
             priorityLevel =  priorityCommand.getPriorityLevel();
         });
 
         insertBinding.yellowPriority.setOnClickListener(v -> {
-            priorityCommand = new MediumPriorityCommand();
+            priorityCommand = new MediumInsertPriorityCommand();
             priorityCommand.changePriorityView(insertBinding);
             priorityLevel =  priorityCommand.getPriorityLevel();
         });
 
         insertBinding.greenPriority.setOnClickListener(v -> {
-            priorityCommand = new LowPriorityCommand();
+            priorityCommand = new LowInsertPriorityCommand();
             priorityCommand.changePriorityView(insertBinding);
             priorityLevel =  priorityCommand.getPriorityLevel();
         });
@@ -100,7 +100,7 @@ public class InsertNotesActivity extends AppCompatActivity {
 
     private String getDate() {
         Date date = new Date();
-        CharSequence dataSequence = DateFormat.format("MMMM d, YYYY", date.getTime());
+        CharSequence dataSequence = DateFormat.format("EEE, MMM d, ''yy", date.getTime());
         return dataSequence.toString();
     }
 }

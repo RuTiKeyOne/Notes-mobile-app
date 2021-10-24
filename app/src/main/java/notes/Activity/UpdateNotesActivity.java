@@ -10,12 +10,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 
 import com.notes.R;
 import com.notes.databinding.ActivityUpdateNotesBinding;
 
-import notes.Command.PriorityCommand.Child.HighPriorityCommand;
+import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Base.BaseUpdateCommand;
+import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.HighUpdatePriorityCommand;
+import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.LowUpdatePriorityCommand;
+import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.MediumUpdatePriorityCommand;
+import notes.Command.PriorityCommand.Parent.BasePriorityCommand;
 import notes.Model.Notes;
 import notes.ViewModel.NotesViewModel;
 
@@ -23,10 +26,12 @@ public class UpdateNotesActivity extends AppCompatActivity {
 
     private ActivityUpdateNotesBinding updateBinding;
     private NotesViewModel notesViewModel;
+    private BaseUpdateCommand changePriorityCommand;
     private Notes note;
     private String title;
     private String subTitle;
     private String notes;
+    private String priorityLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +40,8 @@ public class UpdateNotesActivity extends AppCompatActivity {
         initializationViewComponents();
         setInitialDataView();
         getUpdatedDataWithInput();
-        setUpdatedNote();
-
-    }
-
-    private void initializationViewComponents() {
-        updateBinding = DataBindingUtil.setContentView(this, R.layout.activity_update_notes);
+        addChangePriorityLevel();
+        updatedNote();
 
     }
 
@@ -50,6 +51,13 @@ public class UpdateNotesActivity extends AppCompatActivity {
         title = note.getNotesTitle();
         subTitle = note.getNotesSubTitle();
         notes = note.getNotes();
+        priorityLevel = note.getNotesPriority();
+        changePriorityCommand = new HighUpdatePriorityCommand();
+    }
+
+    private void initializationViewComponents() {
+        updateBinding = DataBindingUtil.setContentView(this, R.layout.activity_update_notes);
+        changePriorityCommand.getPriorityViewWithData(note.getNotesPriority(), updateBinding);
     }
 
     private void setInitialDataView() {
@@ -60,13 +68,7 @@ public class UpdateNotesActivity extends AppCompatActivity {
         }
     }
 
-    private void getUpdatedDataWithInput(){
-        getUpdatedTitle();
-        getUpdatedSubTitle();
-        getUpdatedData();
-    }
-
-    private void setUpdatedNote(){
+    private void updatedNote(){
         updateBinding.updateNotesButton.setOnClickListener(v -> {
             notesViewModel.updateNote(getUpdatedNote());
             onBackPressed();
@@ -78,13 +80,36 @@ public class UpdateNotesActivity extends AppCompatActivity {
         updatedNote.setNotesTitle(title);
         updatedNote.setNotesSubTitle(subTitle);
         updatedNote.setNotes(notes);
+        updatedNote.setNotesPriority(priorityLevel);
         return updatedNote;
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
+    private void addChangePriorityLevel() {
+
+        updateBinding.redPriority.setOnClickListener(v -> {
+            changePriorityCommand = new HighUpdatePriorityCommand();
+            changePriorityCommand.changePriorityView(updateBinding);
+            priorityLevel =  changePriorityCommand.getPriorityLevel();
+        });
+
+        updateBinding.yellowPriority.setOnClickListener(v -> {
+            changePriorityCommand = new MediumUpdatePriorityCommand();
+            changePriorityCommand.changePriorityView(updateBinding);
+            priorityLevel =  changePriorityCommand.getPriorityLevel();
+        });
+
+        updateBinding.greenPriority.setOnClickListener(v -> {
+            changePriorityCommand = new LowUpdatePriorityCommand();
+            changePriorityCommand.changePriorityView(updateBinding);
+            priorityLevel =  changePriorityCommand.getPriorityLevel();
+        });
+
+    }
+
+    private void getUpdatedDataWithInput(){
+        getUpdatedTitle();
+        getUpdatedSubTitle();
+        getUpdatedNotes();
     }
 
     private void getUpdatedTitle(){
@@ -123,7 +148,7 @@ public class UpdateNotesActivity extends AppCompatActivity {
         });
     }
 
-    private void getUpdatedData(){
+    private void getUpdatedNotes(){
         updateBinding.inputData.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -139,6 +164,12 @@ public class UpdateNotesActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
     }
 
 }

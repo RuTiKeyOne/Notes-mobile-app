@@ -1,28 +1,29 @@
-package notes.Command.PriorityCommand.Child;
+package notes.Command.PriorityCommand.Child.InsertPriorityCommand;
 
-import static notes.Utilities.TempDataAdapter.LOW_PRIORITY_KEY;
+import static notes.Utilities.TempDataAdapter.HIGH_PRIORITY_KEY;
 
 import androidx.databinding.ViewDataBinding;
 
 import notes.Command.PriorityCommand.Parent.BasePriorityCommand;
+import notes.Utilities.TempDataAdapter;
 
 import com.notes.R;
 import com.notes.databinding.ActivityInsertNotesBinding;
 
-public class LowPriorityCommand extends BasePriorityCommand {
+public class HighInsertPriorityCommand extends BasePriorityCommand {
 
     @Override
     public void changePriorityView(ViewDataBinding dataBinding) {
         if(dataBinding instanceof ActivityInsertNotesBinding){
             ActivityInsertNotesBinding insertBinding = (ActivityInsertNotesBinding) dataBinding;
-            insertBinding.greenPriority.setImageResource(R.drawable.ic_done);
+            insertBinding.greenPriority.setImageResource(0);
             insertBinding.yellowPriority.setImageResource(0);
-            insertBinding.redPriority.setImageResource(0);
+            insertBinding.redPriority.setImageResource(R.drawable.ic_done);
         }
     }
 
     @Override
-    public String getPriorityLevel() {
-        return LOW_PRIORITY_KEY;
+    public String getPriorityLevel(){
+        return HIGH_PRIORITY_KEY;
     }
 }

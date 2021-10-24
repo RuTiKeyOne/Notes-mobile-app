@@ -116,6 +116,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="26dp"
+            app:tint="@color/white"
             android:layout_marginTop="26dp"
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="26dp"

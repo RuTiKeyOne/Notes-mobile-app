@@ -1,4 +1,4 @@
-package notes.Command.PriorityCommand.Child;
+package notes.Command.PriorityCommand.Child.InsertPriorityCommand;
 
 import static notes.Utilities.TempDataAdapter.MEDIUM_PRIORITY_KEY;
 
@@ -10,7 +10,7 @@ import notes.Utilities.TempDataAdapter;
 import com.notes.R;
 import com.notes.databinding.ActivityInsertNotesBinding;
 
-public class MediumPriorityCommand extends BasePriorityCommand {
+public class MediumInsertPriorityCommand extends BasePriorityCommand {
 
 
     @Override

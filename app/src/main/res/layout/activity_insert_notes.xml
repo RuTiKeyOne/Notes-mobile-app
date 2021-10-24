@@ -100,9 +100,14 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_margin="26dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="26dp"
             android:backgroundTint="@color/red"
-            android:src="@drawable/ic_done" />
+            app:tint="@color/white"
+            android:src="@drawable/ic_done"
+            />
 
     </RelativeLayout>
 
