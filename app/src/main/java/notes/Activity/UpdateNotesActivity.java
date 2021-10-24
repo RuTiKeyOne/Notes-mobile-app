@@ -2,6 +2,7 @@ package notes.Activity;
 
 import static notes.Utilities.TempDataViewModel.NOTE_INTENT_KEY;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
@@ -10,23 +11,32 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.notes.R;
 import com.notes.databinding.ActivityUpdateNotesBinding;
+import com.notes.databinding.DeleteBottomSheetBinding;
 
 import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Base.BaseUpdateCommand;
 import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.HighUpdatePriorityCommand;
 import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.LowUpdatePriorityCommand;
 import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.MediumUpdatePriorityCommand;
 import notes.Command.PriorityCommand.Parent.BasePriorityCommand;
+import notes.Intefaces.DeleteNoteListener;
 import notes.Model.Notes;
 import notes.ViewModel.NotesViewModel;
 
-public class UpdateNotesActivity extends AppCompatActivity {
+public class UpdateNotesActivity extends AppCompatActivity implements DeleteNoteListener {
 
     private ActivityUpdateNotesBinding updateBinding;
     private NotesViewModel notesViewModel;
     private BaseUpdateCommand changePriorityCommand;
+    private DeleteBottomSheetActivity bottomSheetActivity;
     private Notes note;
     private String title;
     private String subTitle;
@@ -46,6 +56,7 @@ public class UpdateNotesActivity extends AppCompatActivity {
     }
 
     private void initializationComponents() {
+        bottomSheetActivity = new DeleteBottomSheetActivity(UpdateNotesActivity.this, this);
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
         note = (Notes) getIntent().getSerializableExtra(NOTE_INTENT_KEY);
         title = note.getNotesTitle();
@@ -68,14 +79,15 @@ public class UpdateNotesActivity extends AppCompatActivity {
         }
     }
 
-    private void updatedNote(){
+    private void updatedNote() {
         updateBinding.updateNotesButton.setOnClickListener(v -> {
             notesViewModel.updateNote(getUpdatedNote());
-            onBackPressed();
+            bottomSheetActivity.onDismissDeleteButtonSheet();
+            finish();
         });
     }
 
-    private Notes getUpdatedNote(){
+    private Notes getUpdatedNote() {
         Notes updatedNote = this.note;
         updatedNote.setNotesTitle(title);
         updatedNote.setNotesSubTitle(subTitle);
@@ -89,77 +101,86 @@ public class UpdateNotesActivity extends AppCompatActivity {
         updateBinding.redPriority.setOnClickListener(v -> {
             changePriorityCommand = new HighUpdatePriorityCommand();
             changePriorityCommand.changePriorityView(updateBinding);
-            priorityLevel =  changePriorityCommand.getPriorityLevel();
+            priorityLevel = changePriorityCommand.getPriorityLevel();
         });
 
         updateBinding.yellowPriority.setOnClickListener(v -> {
             changePriorityCommand = new MediumUpdatePriorityCommand();
             changePriorityCommand.changePriorityView(updateBinding);
-            priorityLevel =  changePriorityCommand.getPriorityLevel();
+            priorityLevel = changePriorityCommand.getPriorityLevel();
         });
 
         updateBinding.greenPriority.setOnClickListener(v -> {
             changePriorityCommand = new LowUpdatePriorityCommand();
             changePriorityCommand.changePriorityView(updateBinding);
-            priorityLevel =  changePriorityCommand.getPriorityLevel();
+            priorityLevel = changePriorityCommand.getPriorityLevel();
         });
 
     }
 
-    private void getUpdatedDataWithInput(){
+    private void getUpdatedDataWithInput() {
         getUpdatedTitle();
         getUpdatedSubTitle();
         getUpdatedNotes();
     }
 
-    private void getUpdatedTitle(){
+    private void getUpdatedTitle() {
         updateBinding.inputTitle.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(!editable.toString().isEmpty()){
+                if (!editable.toString().isEmpty()) {
                     title = editable.toString();
-                }else{
+                } else {
                     title = note.getNotesTitle();
                 }
             }
         });
     }
 
-    private void getUpdatedSubTitle(){
+    private void getUpdatedSubTitle() {
         updateBinding.inputSubTitle.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(!editable.toString().isEmpty()){
+                if (!editable.toString().isEmpty()) {
                     subTitle = editable.toString();
-                }else{
+                } else {
                     subTitle = note.getNotesSubTitle();
                 }
             }
         });
     }
 
-    private void getUpdatedNotes(){
+    private void getUpdatedNotes() {
         updateBinding.inputData.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(!editable.toString().isEmpty()){
+                if (!editable.toString().isEmpty()) {
                     notes = editable.toString();
-                }else{
+                } else {
                     notes = note.getNotes();
                 }
             }
@@ -167,9 +188,21 @@ public class UpdateNotesActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return bottomSheetActivity.onCreateMenu(this, menu);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.deleteNote) {
+            bottomSheetActivity.onShowDeleteBottomSheet();
+        }
+        return true;
+    }
+
+    @Override
+    public void onDeleteNote() {
+        notesViewModel.deleteNoteById(note.getId());
+        onBackPressed();
+    }
 }

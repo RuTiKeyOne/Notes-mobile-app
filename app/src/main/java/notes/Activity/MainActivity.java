@@ -46,6 +46,12 @@ public class MainActivity extends AppCompatActivity implements NoteListener {
         addNewNoteClickBehaviour();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        notesData.clear();
+    }
+
     private void initializationViewComponents() {
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mainBinding.notesRecycleView.setAdapter(notesAdapter);
@@ -74,9 +80,10 @@ public class MainActivity extends AppCompatActivity implements NoteListener {
     }
 
     @Override
-    public void onNoteClicked(Notes note) {
+    public void onNoteEdit(Notes note) {
         Intent updateIntent = new Intent(getApplicationContext(), UpdateNotesActivity.class);
         updateIntent.putExtra(NOTE_INTENT_KEY, note);
         startActivity(updateIntent);
     }
+
 }

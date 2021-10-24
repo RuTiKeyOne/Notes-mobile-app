@@ -51,7 +51,7 @@ public class NotesAdapterCommand extends BaseAdapterCommand<Notes> {
     }
 
     private void setOnClickBehaviour(ViewDataBinding dataBinding, Notes note){
-        getItemNotesBindingWithViewDataBinding(dataBinding).getRoot().setOnClickListener(v -> listener.onNoteClicked(note));
+        getItemNotesBindingWithViewDataBinding(dataBinding).noteEdit.setOnClickListener(v -> listener.onNoteEdit(note));
     }
 
     private void setDataNote(Notes data, ViewDataBinding dataBinding) {
