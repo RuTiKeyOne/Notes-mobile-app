@@ -1,5 +1,7 @@
 package notes.Activity;
 
+import static notes.Utilities.TempDataViewModel.NOTE_INTENT_KEY;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -13,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import notes.Adapter.Child.NotesAdapter;
+import notes.Intefaces.NoteListener;
 import notes.Model.Notes;
 import notes.Repository.NotesRepository;
 import notes.ViewModel.NotesViewModel;
@@ -25,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NoteListener {
 
     private ActivityMainBinding mainBinding;
     private NotesViewModel notesViewModel;
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializationComponents() {
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
-        notesAdapter = new NotesAdapter(notesData);
+        notesAdapter = new NotesAdapter(notesData, this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -70,4 +73,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onNoteClicked(Notes note) {
+        Intent updateIntent = new Intent(getApplicationContext(), UpdateNotesActivity.class);
+        updateIntent.putExtra(NOTE_INTENT_KEY, note);
+        startActivity(updateIntent);
+    }
 }

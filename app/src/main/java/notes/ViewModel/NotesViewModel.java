@@ -21,7 +21,6 @@ public class NotesViewModel extends AndroidViewModel {
         repository = new NotesRepository(application);
     }
 
-
     public LiveData<List<Notes>> getAllNotes(){
         return repository.getAllNotes();
     }

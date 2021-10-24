@@ -4,6 +4,7 @@ import static notes.Utilities.TempDataAdapter.HIGH_PRIORITY_KEY;
 import static notes.Utilities.TempDataAdapter.LOW_PRIORITY_KEY;
 import static notes.Utilities.TempDataAdapter.MEDIUM_PRIORITY_KEY;
 
+import android.system.ErrnoException;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import notes.Command.SetViewCommand.Child.SetHighPriorityCommand;
 import notes.Command.SetViewCommand.Child.SetLowPriorityCommand;
 import notes.Command.SetViewCommand.Child.SetMediumPriorityCommand;
 import notes.Command.SetViewCommand.Parent.BaseSetViewCommand;
+import notes.Intefaces.NoteListener;
 import notes.Model.Notes;
 
 import com.notes.databinding.ItemNotesBinding;
@@ -24,10 +26,22 @@ public class NotesAdapterCommand extends BaseAdapterCommand<Notes> {
 
     private BaseSetViewCommand setViewCommand;
 
+    public NotesAdapterCommand(NoteListener listener) {
+        super(listener);
+    }
+
     @Override
     public void bindItem(Notes data, ViewDataBinding dataBinding) {
-        setNote(data, dataBinding);
-        setPriorityViewBehaviour(data, dataBinding);
+        setDataNote(data, dataBinding);
+        setPriorityView(data, dataBinding);
+        setOnClickBehaviour(dataBinding, data);
+    }
+
+    private ItemNotesBinding getItemNotesBindingWithViewDataBinding(ViewDataBinding dataBinding) {
+        if(dataBinding instanceof ItemNotesBinding) {
+            return (ItemNotesBinding) dataBinding;
+        }
+        throw new NullPointerException("Data binding not instanceof ItemNotesBinding");
     }
 
     @Override
@@ -36,31 +50,29 @@ public class NotesAdapterCommand extends BaseAdapterCommand<Notes> {
         return notesBinding;
     }
 
-    private void setNote(Notes data, ViewDataBinding dataBinding) {
+    private void setOnClickBehaviour(ViewDataBinding dataBinding, Notes note){
+        getItemNotesBindingWithViewDataBinding(dataBinding).getRoot().setOnClickListener(v -> listener.onNoteClicked(note));
+    }
+
+    private void setDataNote(Notes data, ViewDataBinding dataBinding) {
         if (dataBinding instanceof ItemNotesBinding) {
-            ((ItemNotesBinding) dataBinding).setTitle(data.notesTitle);
-            ((ItemNotesBinding) dataBinding).setSubTitle(data.notesSubTitle);
-            ((ItemNotesBinding) dataBinding).setDate(data.notesDate);
+            getItemNotesBindingWithViewDataBinding(dataBinding).setTitle(data.notesTitle);
+            getItemNotesBindingWithViewDataBinding(dataBinding).setSubTitle(data.notesSubTitle);
+            getItemNotesBindingWithViewDataBinding(dataBinding).setDate(data.notesDate);
         }
     }
 
-    private void setPriorityViewBehaviour(Notes data, ViewDataBinding dataBinding) {
-        if (dataBinding instanceof ItemNotesBinding) {
-            setPriorityView(data, dataBinding);
-        }
-    }
 
     private void setPriorityView(Notes data, ViewDataBinding dataBinding) {
-        ItemNotesBinding notesBinding = (ItemNotesBinding) dataBinding;
+        ItemNotesBinding notesBinding = getItemNotesBindingWithViewDataBinding(dataBinding);
         if (data.notesPriority != null) {
-            setPriorityView(data.notesPriority, dataBinding);
+            setPriorityViewCommandManagement(data.notesPriority, dataBinding);
         } else {
             setDefaultPriorityView(dataBinding);
         }
     }
 
-    private void setPriorityView(String priorityLevel, ViewDataBinding dataBinding) {
-        Log.d("log", priorityLevel);
+    private void setPriorityViewCommandManagement(String priorityLevel, ViewDataBinding dataBinding) {
         switch (priorityLevel) {
             case HIGH_PRIORITY_KEY:
                 setDefaultPriorityView(dataBinding);
