@@ -44,9 +44,17 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
         initializationViewComponents();
         getAllNotes();
         addNewNoteClickBehaviour();
+        onClickSearch();
         onClickNoFilter();
         onClickHighToLowFilter();
         onClickLowToHighFilter();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getAllNotes();
+        mainCommand.onSetDefaultNoFilterView(mainBinding);
     }
 
     @Override
@@ -69,7 +77,18 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
         mainCommand = new MainCommand();
     }
 
-    private void onClickNoFilter(){
+    private void onClickSearch() {
+        mainBinding.imageSearch.setOnClickListener(v -> {
+            intentSearchActivity();
+        });
+    }
+
+    private void intentSearchActivity() {
+        Intent searchIntent = new Intent(getApplicationContext(), SearchActivity.class);
+        startActivity(searchIntent);
+    }
+
+    private void onClickNoFilter() {
         mainBinding.noFilter.setOnClickListener(v -> {
             getAllNotes();
             mainCommand.onSetDefaultNoFilterView(mainBinding);
@@ -84,14 +103,14 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
         });
     }
 
-    private void onClickHighToLowFilter(){
+    private void onClickHighToLowFilter() {
         mainBinding.highToLow.setOnClickListener(v -> {
             getHighToLowNotes();
             mainCommand.onSetHighToLowFilterView(mainBinding);
         });
     }
 
-    private void getHighToLowNotes(){
+    private void getHighToLowNotes() {
         notesViewModel.getHighToLowNotes().observe(this, notes -> {
             notesData.clear();
             notesData.addAll(notes);
@@ -99,14 +118,14 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
         });
     }
 
-    private void onClickLowToHighFilter(){
+    private void onClickLowToHighFilter() {
         mainBinding.lowToHigh.setOnClickListener(v -> {
             getLowToHighNotes();
             mainCommand.onSetLowToHighFilterView(mainBinding);
         });
     }
 
-    private void getLowToHighNotes(){
+    private void getLowToHighNotes() {
         notesViewModel.getLowToHighNotes().observe(this, notes -> {
             notesData.clear();
             notesData.addAll(notes);
@@ -130,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
 
     @Override
     public void onOpenSheet(Notes note) {
-        if(detailsActivity != null){
+        if (detailsActivity != null) {
             detailsActivity.onStartBottomSheetActivity(note);
         }
     }
