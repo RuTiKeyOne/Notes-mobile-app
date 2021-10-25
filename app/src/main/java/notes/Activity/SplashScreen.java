@@ -16,7 +16,6 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initializationView();
-        getSupportActionBar().hide();
         runHandler();
     }
 

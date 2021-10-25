@@ -14,4 +14,5 @@
     <string name="no_filter">No Filter</string>
     <string name="high_to_low">High to low</string>
     <string name="low_to_high">Low to high</string>
+    <string name="search">Search</string>
 </resources>

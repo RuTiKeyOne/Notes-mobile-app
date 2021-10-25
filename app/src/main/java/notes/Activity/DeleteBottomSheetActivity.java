@@ -50,11 +50,6 @@ public class DeleteBottomSheetActivity{
         });
     }
 
-    public boolean onCreateMenu(AppCompatActivity activity, Menu menu){
-        activity.getMenuInflater().inflate(R.menu.delete_menu, menu);
-        return true;
-    }
-
     public void onShowDeleteBottomSheet(){
         bottomDialog.show();
     }

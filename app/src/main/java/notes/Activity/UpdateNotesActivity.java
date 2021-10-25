@@ -50,6 +50,7 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
         initializationViewComponents();
         setInitialDataView();
         getUpdatedDataWithInput();
+        onDeleteNoteClick();
         addChangePriorityLevel();
         updatedNote();
 
@@ -188,17 +189,11 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return bottomSheetActivity.onCreateMenu(this, menu);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.deleteNote) {
+    private void onDeleteNoteClick(){
+        updateBinding.imageDelete.setOnClickListener(v -> {
             bottomSheetActivity.onShowDeleteBottomSheet();
-        }
-        return true;
+        });
     }
 
     @Override

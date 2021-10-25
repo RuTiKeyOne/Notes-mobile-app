@@ -10,11 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Notes">
         <activity
+            android:name="notes.Activity.SearchActivity"
+            android:exported="true" />
+        <activity
             android:name="notes.Activity.UpdateNotesActivity"
             android:exported="true" />
         <activity
             android:name="notes.Activity.InsertNotesActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name="notes.Activity.SplashScreen"
             android:exported="true">
@@ -26,8 +29,7 @@
         </activity>
         <activity
             android:name="notes.Activity.MainActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
