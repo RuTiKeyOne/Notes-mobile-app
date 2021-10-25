@@ -95,6 +95,8 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
         return updatedNote;
     }
 
+    //TODO refactoring his fragment code later
+
     private void addChangePriorityLevel() {
 
         updateBinding.redPriority.setOnClickListener(v -> {

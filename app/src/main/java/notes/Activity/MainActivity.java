@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import notes.Adapter.Child.NotesAdapter;
+import notes.Command.MainCommand;
 import notes.Intefaces.EditNoteListener;
 import notes.Intefaces.OpenDetailBottomSheetListener;
 import notes.Model.Notes;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
     private NotesViewModel notesViewModel;
     private NotesAdapter notesAdapter;
     private DetailsBottomSheetActivity detailsActivity;
+    private MainCommand mainCommand;
     private List<Notes> notesData = new ArrayList<>();
 
 
@@ -54,12 +56,14 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mainBinding.notesRecycleView.setAdapter(notesAdapter);
         mainBinding.notesRecycleView.setLayoutManager(new GridLayoutManager(this, 2));
+        mainCommand.onChangeFilter(mainBinding);
     }
 
     private void initializationComponents() {
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
         notesAdapter = new NotesAdapter(notesData, this);
         detailsActivity = new DetailsBottomSheetActivity(this);
+        mainCommand = new MainCommand();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

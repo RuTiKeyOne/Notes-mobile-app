@@ -47,6 +47,9 @@ public class InsertNotesActivity extends AppCompatActivity {
         priorityLevel = priorityCommand.getPriorityLevel();
     }
 
+
+    //TODO refactoring his fragment code later
+
     private void addChangePriorityLevel() {
 
         insertBinding.redPriority.setOnClickListener(v -> {
