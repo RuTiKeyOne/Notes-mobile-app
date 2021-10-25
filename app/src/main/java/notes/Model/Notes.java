@@ -33,7 +33,7 @@ public class Notes implements Serializable {
 
     @ColumnInfo(name = "notes_priority")
     @SerializedName("notes_priority")
-    public String notesPriority;
+    public int notesPriority;
 
     public void setId(int id) {
         this.id = id;
@@ -55,7 +55,7 @@ public class Notes implements Serializable {
         this.notesDate = notesDate;
     }
 
-    public void setNotesPriority(String notesPriority) {
+    public void setNotesPriority(int notesPriority) {
         this.notesPriority = notesPriority;
     }
 
@@ -79,7 +79,7 @@ public class Notes implements Serializable {
         return notes;
     }
 
-    public String getNotesPriority() {
+    public int getNotesPriority() {
         return notesPriority;
     }
 }

@@ -20,7 +20,7 @@ public class HighUpdatePriorityCommand extends BaseUpdateCommand {
     }
 
     @Override
-    public String getPriorityLevel(){
+    public int getPriorityLevel(){
         return HIGH_PRIORITY_KEY;
     }
 }

@@ -13,15 +13,15 @@ import notes.Command.PriorityCommand.Parent.BasePriorityCommand;
 
 public abstract class BaseUpdateCommand extends BasePriorityCommand {
 
-    public void getPriorityViewWithData(String priorityLevel, ViewDataBinding dataBinding){
-        if(priorityLevel != null){
+    public void getPriorityViewWithData(int priorityLevel, ViewDataBinding dataBinding){
+        if(priorityLevel != 0){
             getPriorityView(priorityLevel, dataBinding);
         }else{
             new HighUpdatePriorityCommand().changePriorityView(dataBinding);
         }
     }
 
-    private void getPriorityView(String priorityLevel, ViewDataBinding dataBinding){
+    private void getPriorityView(int priorityLevel, ViewDataBinding dataBinding){
         switch (priorityLevel){
             case HIGH_PRIORITY_KEY :
                 new HighUpdatePriorityCommand().changePriorityView(dataBinding);
@@ -39,5 +39,5 @@ public abstract class BaseUpdateCommand extends BasePriorityCommand {
     public abstract void changePriorityView(ViewDataBinding dataBinding);
 
     @Override
-    public abstract String getPriorityLevel();
+    public abstract int getPriorityLevel();
 }

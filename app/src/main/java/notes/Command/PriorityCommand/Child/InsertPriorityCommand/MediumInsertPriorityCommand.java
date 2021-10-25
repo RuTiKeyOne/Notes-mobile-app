@@ -25,7 +25,7 @@ public class MediumInsertPriorityCommand extends BasePriorityCommand {
     }
 
     @Override
-    public String getPriorityLevel() {
+    public int getPriorityLevel() {
         return MEDIUM_PRIORITY_KEY;
     }
 }

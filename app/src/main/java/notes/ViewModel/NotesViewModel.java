@@ -25,6 +25,10 @@ public class NotesViewModel extends AndroidViewModel {
         return repository.getAllNotes();
     }
 
+    public LiveData<List<Notes>> getHighToLowNotes(){return repository.getHighToLowNotes();}
+
+    public LiveData<List<Notes>> getLowToHighNotes(){return repository.getLowToHighNotes();}
+
     public void insertNotes(Notes notes){
         repository.insertNotes(notes);
     }

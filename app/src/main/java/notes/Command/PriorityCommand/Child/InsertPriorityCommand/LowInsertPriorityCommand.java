@@ -22,7 +22,7 @@ public class LowInsertPriorityCommand extends BasePriorityCommand {
     }
 
     @Override
-    public String getPriorityLevel() {
+    public int getPriorityLevel() {
         return LOW_PRIORITY_KEY;
     }
 }

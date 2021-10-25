@@ -41,7 +41,7 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
     private String title;
     private String subTitle;
     private String notes;
-    private String priorityLevel;
+    private int priorityLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

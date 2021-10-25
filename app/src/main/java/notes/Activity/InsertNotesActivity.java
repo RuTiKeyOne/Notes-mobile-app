@@ -23,7 +23,7 @@ public class InsertNotesActivity extends AppCompatActivity {
     private ActivityInsertNotesBinding insertBinding;
     private NotesViewModel notesViewModel;
     private BasePriorityCommand priorityCommand;
-    private String priorityLevel;
+    private int priorityLevel;
     private String title;
     private String subTitle;
     private String notes;

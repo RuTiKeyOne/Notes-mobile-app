@@ -22,7 +22,7 @@ public class LowUpdatePriorityCommand extends BaseUpdateCommand {
     }
 
     @Override
-    public String getPriorityLevel() {
+    public int getPriorityLevel() {
         return LOW_PRIORITY_KEY;
     }
 

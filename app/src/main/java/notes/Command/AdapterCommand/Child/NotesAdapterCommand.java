@@ -64,14 +64,14 @@ public class NotesAdapterCommand extends BaseAdapterCommand<Notes> {
 
     private void setPriorityView(Notes data, ViewDataBinding dataBinding) {
         ItemNotesBinding notesBinding = getItemNotesBindingWithViewDataBinding(dataBinding);
-        if (data.notesPriority != null) {
+        if (data.notesPriority != 0) {
             setPriorityViewCommandManagement(data.notesPriority, dataBinding);
         } else {
             setDefaultPriorityView(dataBinding);
         }
     }
 
-    private void setPriorityViewCommandManagement(String priorityLevel, ViewDataBinding dataBinding) {
+    private void setPriorityViewCommandManagement(int priorityLevel, ViewDataBinding dataBinding) {
         switch (priorityLevel) {
             case HIGH_PRIORITY_KEY:
                 setDefaultPriorityView(dataBinding);

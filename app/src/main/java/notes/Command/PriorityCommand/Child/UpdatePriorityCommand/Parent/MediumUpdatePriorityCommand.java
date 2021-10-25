@@ -25,7 +25,7 @@ public class MediumUpdatePriorityCommand extends BaseUpdateCommand {
     }
 
     @Override
-    public String getPriorityLevel() {
+    public int getPriorityLevel() {
         return MEDIUM_PRIORITY_KEY;
     }
 

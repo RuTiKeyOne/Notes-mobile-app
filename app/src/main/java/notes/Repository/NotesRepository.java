@@ -30,6 +30,10 @@ public class NotesRepository {
         return notesDao.getAllNotes();
     }
 
+    public LiveData<List<Notes>> getHighToLowNotes(){return notesDao.highToLow();}
+
+    public LiveData<List<Notes>> getLowToHighNotes(){return notesDao.lowToHigh();}
+
     public NotesDatabase getDatabase() {
         return database;
     }
