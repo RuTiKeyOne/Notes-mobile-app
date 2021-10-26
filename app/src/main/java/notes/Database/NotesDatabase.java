@@ -1,11 +1,9 @@
 package notes.Database;
 
+import static notes.Utilities.TempDatabase.DATABASE_NAME;
+
 import android.content.Context;
-
-import androidx.room.Database;
-import androidx.room.Room;
-import androidx.room.RoomDatabase;
-
+import androidx.room.*;
 import notes.Dao.NotesDao;
 import notes.Model.Notes;
 
@@ -15,11 +13,11 @@ public abstract class NotesDatabase extends RoomDatabase {
 
     public static NotesDatabase instance;
 
-    public static NotesDatabase getDatabaseInstance(Context context){
-        if(instance == null){
+    public static NotesDatabase getDatabaseInstance(Context context) {
+        if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
-                                            NotesDatabase.class,
-                                            "notes_database").allowMainThreadQueries().build();
+                    NotesDatabase.class,
+                    DATABASE_NAME).allowMainThreadQueries().build();
         }
 
         return instance;

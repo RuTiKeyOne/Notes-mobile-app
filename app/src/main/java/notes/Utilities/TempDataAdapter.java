@@ -1,9 +1,5 @@
 package notes.Utilities;
 
-
-import java.util.Arrays;
-import java.util.List;
-
 public class TempDataAdapter {
 
     public static final int HIGH_PRIORITY_KEY = 1;

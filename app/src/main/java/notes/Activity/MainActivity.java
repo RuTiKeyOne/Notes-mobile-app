@@ -1,41 +1,26 @@
 package notes.Activity;
 
-import static notes.Utilities.TemDataActivity.NOTES_DATA_KEY;
-import static notes.Utilities.TempDataViewModel.NOTE_INTENT_KEY;
-
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-
 import notes.Adapter.Child.NotesAdapter;
-import notes.Command.MainCommand;
-import notes.Intefaces.EditNoteListener;
-import notes.Intefaces.OpenDetailBottomSheetListener;
+import notes.Command.MainActivityCommand;
 import notes.Model.Notes;
+import notes.Utilities.TempDataActivity;
 import notes.ViewModel.NotesViewModel;
-
 import com.notes.R;
 import com.notes.databinding.ActivityMainBinding;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class MainActivity extends AppCompatActivity implements EditNoteListener, OpenDetailBottomSheetListener {
+public class MainActivity extends TempDataActivity {
 
     private ActivityMainBinding mainBinding;
     private NotesViewModel notesViewModel;
     private NotesAdapter notesAdapter;
-    private DetailsBottomSheetActivity<MainActivity> detailsActivity;
-    private MainCommand mainCommand;
+    private MainActivityCommand mainActivityCommand;
     private List<Notes> notesData = new ArrayList<>();
 
 
@@ -56,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
     protected void onRestart() {
         super.onRestart();
         getAllNotes();
-        mainCommand.onSetDefaultNoFilterView(mainBinding);
+        mainActivityCommand.onSetDefaultNoFilterView(mainBinding);
     }
 
     @Override
@@ -69,14 +54,15 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mainBinding.notesRecycleView.setAdapter(notesAdapter);
         mainBinding.notesRecycleView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        mainCommand.setDefaultFilter(mainBinding);
+        mainActivityCommand.setDefaultFilter(mainBinding);
     }
 
-    private void initializationComponents() {
+    @Override
+    protected void initializationComponents() {
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
         notesAdapter = new NotesAdapter(notesData, this);
-        detailsActivity = new DetailsBottomSheetActivity<>(this);
-        mainCommand = new MainCommand();
+        this.detailsActivity = new DetailsBottomSheetActivity(this);
+        mainActivityCommand = new MainActivityCommand();
     }
 
     private void onClickSearch() {
@@ -94,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
     private void onClickNoFilter() {
         mainBinding.noFilter.setOnClickListener(v -> {
             getAllNotes();
-            mainCommand.onSetDefaultNoFilterView(mainBinding);
+            mainActivityCommand.onSetDefaultNoFilterView(mainBinding);
         });
     }
 
@@ -109,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
     private void onClickHighToLowFilter() {
         mainBinding.highToLow.setOnClickListener(v -> {
             getHighToLowNotes();
-            mainCommand.onSetHighToLowFilterView(mainBinding);
+            mainActivityCommand.onSetHighToLowFilterView(mainBinding);
         });
     }
 
@@ -124,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
     private void onClickLowToHighFilter() {
         mainBinding.lowToHigh.setOnClickListener(v -> {
             getLowToHighNotes();
-            mainCommand.onSetLowToHighFilterView(mainBinding);
+            mainActivityCommand.onSetLowToHighFilterView(mainBinding);
         });
     }
 
@@ -143,23 +129,5 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
         });
     }
 
-    //TODO реализовать базовую реализацию
-
-    @Override
-    public void onNoteEdit(Notes note) {
-        Intent updateIntent = new Intent(getApplicationContext(), UpdateNotesActivity.class);
-        updateIntent.putExtra(NOTE_INTENT_KEY, note);
-        startActivity(updateIntent);
-    }
-
-
-    //TODO ввести базовую реализацию
-
-    @Override
-    public void onOpenSheet(Notes note) {
-        if (detailsActivity != null) {
-            detailsActivity.onStartBottomSheetActivity(note);
-        }
-    }
 
 }

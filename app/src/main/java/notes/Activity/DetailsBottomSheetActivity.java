@@ -1,31 +1,27 @@
 package notes.Activity;
 
 import android.view.LayoutInflater;
-
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.notes.R;
 import com.notes.databinding.DetailsNoteSheetBinding;
-
 import notes.Intefaces.EditNoteListener;
-import notes.Intefaces.OpenDetailBottomSheetListener;
 import notes.Model.Notes;
+import notes.Utilities.TempDataActivity;
 
-public class DetailsBottomSheetActivity<T extends AppCompatActivity & OpenDetailBottomSheetListener & EditNoteListener>{
+public class DetailsBottomSheetActivity{
 
     private Notes note;
     private EditNoteListener listener;
     private BottomSheetDialog bottomDialog;
     private DetailsNoteSheetBinding detailsBinding;
 
-
-    public DetailsBottomSheetActivity(T activity) {
+    public DetailsBottomSheetActivity(TempDataActivity activity) {
         initializationComponents(activity);
         onClickedEdit();
     }
 
-    private void initializationComponents(T activity){
+    private void initializationComponents(TempDataActivity activity){
         bottomDialog = new BottomSheetDialog(activity);
         detailsBinding = DataBindingUtil.inflate(
                 LayoutInflater.from(activity),

@@ -1,14 +1,9 @@
 package notes.Dao;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Insert;
-import androidx.room.Query;
-import androidx.room.Update;
-
+import androidx.room.*;
 import notes.Model.Notes;
-
 import java.util.List;
-import java.util.Set;
 
 @androidx.room.Dao
 public interface NotesDao {

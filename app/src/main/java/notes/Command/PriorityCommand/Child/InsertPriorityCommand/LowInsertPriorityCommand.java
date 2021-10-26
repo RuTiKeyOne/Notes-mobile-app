@@ -1,11 +1,8 @@
 package notes.Command.PriorityCommand.Child.InsertPriorityCommand;
 
 import static notes.Utilities.TempDataAdapter.LOW_PRIORITY_KEY;
-
 import androidx.databinding.ViewDataBinding;
-
 import notes.Command.PriorityCommand.Parent.BasePriorityCommand;
-
 import com.notes.R;
 import com.notes.databinding.ActivityInsertNotesBinding;
 

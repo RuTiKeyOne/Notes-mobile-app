@@ -1,32 +1,16 @@
 package notes.Activity;
 
 import static notes.Utilities.TempDataViewModel.NOTE_INTENT_KEY;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
-
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.notes.R;
 import com.notes.databinding.ActivityUpdateNotesBinding;
-import com.notes.databinding.DeleteBottomSheetBinding;
-
 import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Base.BaseUpdateCommand;
-import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.HighUpdatePriorityCommand;
-import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.LowUpdatePriorityCommand;
-import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.MediumUpdatePriorityCommand;
-import notes.Command.PriorityCommand.Parent.BasePriorityCommand;
+import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.*;
 import notes.Intefaces.DeleteNoteListener;
 import notes.Model.Notes;
 import notes.ViewModel.NotesViewModel;
@@ -79,7 +63,6 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
             updateBinding.setNotes(note.notes);
         }
     }
-
 
     private void updatedNote() {
         updateBinding.updateNotesButton.setOnClickListener(v -> {
@@ -189,7 +172,6 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
             }
         });
     }
-
 
     private void onDeleteNoteClick(){
         updateBinding.imageDelete.setOnClickListener(v -> {

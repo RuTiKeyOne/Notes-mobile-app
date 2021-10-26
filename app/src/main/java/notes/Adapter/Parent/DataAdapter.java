@@ -26,7 +26,6 @@ public class DataAdapter<TypeData , Data extends List<TypeData>> extends Recycle
         this.idLayout = idLayout;
     }
 
-
     @NonNull
     @Override
     public DataViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

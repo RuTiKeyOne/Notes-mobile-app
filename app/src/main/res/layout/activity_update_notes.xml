@@ -110,23 +110,23 @@
 
                 <ImageView
                     android:id="@+id/redPriority"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_margin="10dp"
                     android:src="@drawable/ic_done"
                     android:background="@drawable/red_shape"/>
 
                 <ImageView
                     android:id="@+id/yellowPriority"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_margin="10dp"
                     android:background="@drawable/yellow_shape"/>
 
                 <ImageView
                     android:id="@+id/greenPriority"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_margin="10dp"
                     android:background="@drawable/green_shape"/>
 

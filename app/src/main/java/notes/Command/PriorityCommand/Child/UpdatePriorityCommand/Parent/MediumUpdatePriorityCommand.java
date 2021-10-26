@@ -1,15 +1,10 @@
 package notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent;
 
 import static notes.Utilities.TempDataAdapter.MEDIUM_PRIORITY_KEY;
-
 import androidx.databinding.ViewDataBinding;
-
 import com.notes.R;
-import com.notes.databinding.ActivityInsertNotesBinding;
 import com.notes.databinding.ActivityUpdateNotesBinding;
-
 import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Base.BaseUpdateCommand;
-import notes.Command.PriorityCommand.Parent.BasePriorityCommand;
 
 public class MediumUpdatePriorityCommand extends BaseUpdateCommand {
 

@@ -3,12 +3,11 @@ package notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Base;
 import static notes.Utilities.TempDataAdapter.HIGH_PRIORITY_KEY;
 import static notes.Utilities.TempDataAdapter.LOW_PRIORITY_KEY;
 import static notes.Utilities.TempDataAdapter.MEDIUM_PRIORITY_KEY;
-
 import androidx.databinding.ViewDataBinding;
 
-import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.HighUpdatePriorityCommand;
-import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.LowUpdatePriorityCommand;
-import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.MediumUpdatePriorityCommand;
+import com.notes.databinding.ActivityInsertNotesBinding;
+
+import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.*;
 import notes.Command.PriorityCommand.Parent.BasePriorityCommand;
 
 public abstract class BaseUpdateCommand extends BasePriorityCommand {

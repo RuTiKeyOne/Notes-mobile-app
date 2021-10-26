@@ -3,26 +3,17 @@ package notes.Command.AdapterCommand.Child;
 import static notes.Utilities.TempDataAdapter.HIGH_PRIORITY_KEY;
 import static notes.Utilities.TempDataAdapter.LOW_PRIORITY_KEY;
 import static notes.Utilities.TempDataAdapter.MEDIUM_PRIORITY_KEY;
-
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
-
+import android.view.*;
+import androidx.databinding.*;
 import notes.Command.AdapterCommand.Parent.BaseAdapterCommand;
-import notes.Command.SetViewCommand.Child.SetHighPriorityCommand;
-import notes.Command.SetViewCommand.Child.SetLowPriorityCommand;
-import notes.Command.SetViewCommand.Child.SetMediumPriorityCommand;
+import notes.Command.SetViewCommand.Child.*;
 import notes.Command.SetViewCommand.Parent.BaseSetViewCommand;
-import notes.Intefaces.EditNoteListener;
 import notes.Intefaces.OpenDetailBottomSheetListener;
 import notes.Model.Notes;
 
 import com.notes.databinding.ItemNotesBinding;
 
 public class NotesAdapterCommand extends BaseAdapterCommand<Notes> {
-
 
     private BaseSetViewCommand setViewCommand;
     private OpenDetailBottomSheetListener openListener;
@@ -35,7 +26,7 @@ public class NotesAdapterCommand extends BaseAdapterCommand<Notes> {
     public void bindItem(Notes data, ViewDataBinding dataBinding) {
         setDataNote(data, dataBinding);
         setPriorityView(data, dataBinding);
-        onClickItemBehaviour(dataBinding, data);
+        onClickItemAddBehaviour(dataBinding, data);
     }
 
     private ItemNotesBinding getItemNotesBindingWithViewDataBinding(ViewDataBinding dataBinding) {
@@ -51,8 +42,9 @@ public class NotesAdapterCommand extends BaseAdapterCommand<Notes> {
         return notesBinding;
     }
 
-    private void onClickItemBehaviour(ViewDataBinding dataBinding, Notes note){
-        getItemNotesBindingWithViewDataBinding(dataBinding).getRoot().setOnClickListener(v -> openListener.onOpenSheet(note));
+    private void onClickItemAddBehaviour(ViewDataBinding dataBinding, Notes note){
+        getItemNotesBindingWithViewDataBinding(dataBinding).getRoot().
+                setOnClickListener(v -> openListener.onOpenSheet(note));
     }
 
     private void setDataNote(Notes data, ViewDataBinding dataBinding) {
@@ -62,7 +54,6 @@ public class NotesAdapterCommand extends BaseAdapterCommand<Notes> {
             getItemNotesBindingWithViewDataBinding(dataBinding).setDate(data.notesDate);
         }
     }
-
 
     private void setPriorityView(Notes data, ViewDataBinding dataBinding) {
         ItemNotesBinding notesBinding = getItemNotesBindingWithViewDataBinding(dataBinding);

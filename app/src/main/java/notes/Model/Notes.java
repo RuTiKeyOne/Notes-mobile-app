@@ -1,8 +1,6 @@
 package notes.Model;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import androidx.room.*;
 
 import com.google.gson.annotations.SerializedName;
 

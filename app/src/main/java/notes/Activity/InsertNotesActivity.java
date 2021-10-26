@@ -3,23 +3,17 @@ package notes.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
 import android.text.format.DateFormat;
-
-import notes.Command.PriorityCommand.Child.InsertPriorityCommand.HighInsertPriorityCommand;
-import notes.Command.PriorityCommand.Child.InsertPriorityCommand.LowInsertPriorityCommand;
-import notes.Command.PriorityCommand.Child.InsertPriorityCommand.MediumInsertPriorityCommand;
+import notes.Command.PriorityCommand.Child.InsertPriorityCommand.*;
 import notes.Command.PriorityCommand.Parent.BasePriorityCommand;
 import notes.Model.Notes;
 import notes.ViewModel.NotesViewModel;
 import com.notes.R;
 import com.notes.databinding.ActivityInsertNotesBinding;
-
 import java.util.Date;
 
 public class InsertNotesActivity extends AppCompatActivity {
-
     private ActivityInsertNotesBinding insertBinding;
     private NotesViewModel notesViewModel;
     private BasePriorityCommand priorityCommand;
@@ -73,7 +67,6 @@ public class InsertNotesActivity extends AppCompatActivity {
     }
 
     private void addNewNoteInDatabase() {
-
         insertBinding.doneNotesButton.setOnClickListener(v -> {
             createNote(getNotesData());
         });

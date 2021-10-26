@@ -1,37 +1,23 @@
 package notes.Activity;
 
-import static notes.Utilities.TemDataActivity.NOTES_DATA_KEY;
-import static notes.Utilities.TempDataViewModel.NOTE_INTENT_KEY;
-
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-
 import com.notes.R;
 import com.notes.databinding.ActivitySearchBinding;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
+import java.util.*;
 import notes.Adapter.Child.NotesAdapter;
-import notes.Intefaces.EditNoteListener;
-import notes.Intefaces.OpenDetailBottomSheetListener;
 import notes.Model.Notes;
+import notes.Utilities.TempDataActivity;
 import notes.ViewModel.NotesViewModel;
 
-public class SearchActivity extends AppCompatActivity implements EditNoteListener, OpenDetailBottomSheetListener {
+public class SearchActivity extends TempDataActivity {
 
     private ActivitySearchBinding searchBinding;
     private NotesViewModel notesViewModel;
-    private DetailsBottomSheetActivity<SearchActivity> detailsActivity;
     private NotesAdapter notesAdapter;
     private List<Notes> notesData = new ArrayList<>();
     private String searchText;
@@ -48,7 +34,8 @@ public class SearchActivity extends AppCompatActivity implements EditNoteListene
     @Override
     protected void onRestart() {
         super.onRestart();
-        clearAndGetAllNotes();
+        notesData.clear();
+        getAllNotes();
     }
 
     @Override
@@ -57,13 +44,11 @@ public class SearchActivity extends AppCompatActivity implements EditNoteListene
         notesData.clear();
     }
 
-
-    //TODO доделаю это после переработки адаптера
-
-    private void initializationComponents() {
+    @Override
+    protected void initializationComponents() {
         notesData = (List<Notes>) getIntent().getSerializableExtra(NOTES_DATA_KEY);
-        detailsActivity = new DetailsBottomSheetActivity<>(this);
         notesAdapter = new NotesAdapter(notesData, this);
+        this.detailsActivity = new DetailsBottomSheetActivity(this);
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
 
     }
@@ -97,10 +82,6 @@ public class SearchActivity extends AppCompatActivity implements EditNoteListene
         });
     }
 
-    private void clearAndGetAllNotes() {
-        notesData.clear();
-        getAllNotes();
-    }
 
     private void getSearchedNotes() {
         List<Notes> oldNotes = new ArrayList<>();
@@ -123,28 +104,11 @@ public class SearchActivity extends AppCompatActivity implements EditNoteListene
     }
 
     //TODO повторение кода из MainActivity
-
     private void getAllNotes() {
         notesData.clear();
         notesViewModel.getAllNotes().observe(this, notes -> {
             notesData.addAll(notes);
             notesAdapter.notifyDataSetChanged();
         });
-    }
-
-    //TODO вот это необходимо переделать
-
-    @Override
-    public void onNoteEdit(Notes note) {
-        Intent updateIntent = new Intent(getApplicationContext(), UpdateNotesActivity.class);
-        updateIntent.putExtra(NOTE_INTENT_KEY, note);
-        startActivity(updateIntent);
-    }
-
-    @Override
-    public void onOpenSheet(Notes note) {
-        if (detailsActivity != null) {
-            detailsActivity.onStartBottomSheetActivity(note);
-        }
     }
 }

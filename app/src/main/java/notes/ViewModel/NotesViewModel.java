@@ -1,16 +1,11 @@
 package notes.ViewModel;
 
 import android.app.Application;
-
 import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
-
+import androidx.lifecycle.*;
 import notes.Model.Notes;
 import notes.Repository.NotesRepository;
-
 import java.util.List;
-import java.util.Set;
 
 public class NotesViewModel extends AndroidViewModel {
 

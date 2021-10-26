@@ -1,9 +1,6 @@
 package notes.Command.SetViewCommand.Child;
 
-import android.graphics.drawable.Drawable;
-
 import androidx.databinding.ViewDataBinding;
-
 import com.notes.R;
 import com.notes.databinding.ItemNotesBinding;
 
@@ -17,7 +14,6 @@ public class SetHighPriorityCommand extends BaseSetViewCommand {
         if(dataBinding instanceof ItemNotesBinding){
             ItemNotesBinding notesBinding = (ItemNotesBinding) dataBinding;
             notesBinding.notesPriority.setBackgroundResource(R.drawable.red_shape);
-
         }
     }
 }

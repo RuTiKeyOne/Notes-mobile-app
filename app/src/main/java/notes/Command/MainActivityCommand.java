@@ -1,11 +1,9 @@
 package notes.Command;
 
-import androidx.databinding.ViewDataBinding;
-
 import com.notes.R;
 import com.notes.databinding.ActivityMainBinding;
 
-public class MainCommand {
+public class MainActivityCommand {
 
     public void setDefaultFilter(ActivityMainBinding mainBinding) {
         onSetDefaultNoFilterView(mainBinding);

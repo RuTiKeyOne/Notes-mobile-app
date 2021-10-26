@@ -1,10 +1,6 @@
 package notes.Activity;
 
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.View;
-import android.widget.LinearLayout;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
