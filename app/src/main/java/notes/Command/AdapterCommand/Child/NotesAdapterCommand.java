@@ -23,17 +23,19 @@ import com.notes.databinding.ItemNotesBinding;
 
 public class NotesAdapterCommand extends BaseAdapterCommand<Notes> {
 
+
     private BaseSetViewCommand setViewCommand;
+    private OpenDetailBottomSheetListener openListener;
 
     public NotesAdapterCommand(OpenDetailBottomSheetListener listener) {
-        super(listener);
+        this.openListener = listener;
     }
 
     @Override
     public void bindItem(Notes data, ViewDataBinding dataBinding) {
         setDataNote(data, dataBinding);
         setPriorityView(data, dataBinding);
-        setOnClickBehaviour(dataBinding, data);
+        onClickItemBehaviour(dataBinding, data);
     }
 
     private ItemNotesBinding getItemNotesBindingWithViewDataBinding(ViewDataBinding dataBinding) {
@@ -49,7 +51,7 @@ public class NotesAdapterCommand extends BaseAdapterCommand<Notes> {
         return notesBinding;
     }
 
-    private void setOnClickBehaviour(ViewDataBinding dataBinding, Notes note){
+    private void onClickItemBehaviour(ViewDataBinding dataBinding, Notes note){
         getItemNotesBindingWithViewDataBinding(dataBinding).getRoot().setOnClickListener(v -> openListener.onOpenSheet(note));
     }
 

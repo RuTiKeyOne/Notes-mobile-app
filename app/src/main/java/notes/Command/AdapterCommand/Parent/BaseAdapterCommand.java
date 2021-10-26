@@ -10,12 +10,6 @@ import notes.Intefaces.OpenDetailBottomSheetListener;
 
 public abstract class BaseAdapterCommand<T>{
 
-    protected OpenDetailBottomSheetListener openListener;
-
-    public BaseAdapterCommand(OpenDetailBottomSheetListener listener) {
-        this.openListener = listener;
-    }
-
     public abstract void bindItem(T data, ViewDataBinding dataBinding);
     public abstract ViewDataBinding getItemContainerBinding(LayoutInflater layoutInflater,
                                                             int idLayout, ViewGroup parent);

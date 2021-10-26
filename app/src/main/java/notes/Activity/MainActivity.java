@@ -1,5 +1,6 @@
 package notes.Activity;
 
+import static notes.Utilities.TemDataActivity.NOTES_DATA_KEY;
 import static notes.Utilities.TempDataViewModel.NOTE_INTENT_KEY;
 
 import androidx.annotation.RequiresApi;
@@ -24,6 +25,7 @@ import notes.ViewModel.NotesViewModel;
 import com.notes.R;
 import com.notes.databinding.ActivityMainBinding;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
     private ActivityMainBinding mainBinding;
     private NotesViewModel notesViewModel;
     private NotesAdapter notesAdapter;
-    private DetailsBottomSheetActivity detailsActivity;
+    private DetailsBottomSheetActivity<MainActivity> detailsActivity;
     private MainCommand mainCommand;
     private List<Notes> notesData = new ArrayList<>();
 
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
     private void initializationComponents() {
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
         notesAdapter = new NotesAdapter(notesData, this);
-        detailsActivity = new DetailsBottomSheetActivity(this);
+        detailsActivity = new DetailsBottomSheetActivity<>(this);
         mainCommand = new MainCommand();
     }
 
@@ -85,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
 
     private void intentSearchActivity() {
         Intent searchIntent = new Intent(getApplicationContext(), SearchActivity.class);
+        searchIntent.putExtra(NOTES_DATA_KEY, (Serializable) notesData);
         startActivity(searchIntent);
     }
 
@@ -140,12 +143,17 @@ public class MainActivity extends AppCompatActivity implements EditNoteListener,
         });
     }
 
+    //TODO реализовать базовую реализацию
+
     @Override
     public void onNoteEdit(Notes note) {
         Intent updateIntent = new Intent(getApplicationContext(), UpdateNotesActivity.class);
         updateIntent.putExtra(NOTE_INTENT_KEY, note);
         startActivity(updateIntent);
     }
+
+
+    //TODO ввести базовую реализацию
 
     @Override
     public void onOpenSheet(Notes note) {

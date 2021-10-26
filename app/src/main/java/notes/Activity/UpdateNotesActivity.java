@@ -80,6 +80,7 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
         }
     }
 
+
     private void updatedNote() {
         updateBinding.updateNotesButton.setOnClickListener(v -> {
             notesViewModel.updateNote(getUpdatedNote());
