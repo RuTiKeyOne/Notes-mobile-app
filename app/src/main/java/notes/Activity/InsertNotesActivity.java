@@ -7,13 +7,14 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import notes.Command.PriorityCommand.Child.InsertPriorityCommand.*;
 import notes.Command.PriorityCommand.Parent.BasePriorityCommand;
+import notes.Intefaces.onChangePriorityView;
 import notes.Model.Notes;
 import notes.ViewModel.NotesViewModel;
 import com.notes.R;
 import com.notes.databinding.ActivityInsertNotesBinding;
 import java.util.Date;
 
-public class InsertNotesActivity extends AppCompatActivity {
+public class InsertNotesActivity extends AppCompatActivity implements onChangePriorityView {
     private ActivityInsertNotesBinding insertBinding;
     private NotesViewModel notesViewModel;
     private BasePriorityCommand priorityCommand;
@@ -28,7 +29,9 @@ public class InsertNotesActivity extends AppCompatActivity {
         initializationViewComponents();
         initializationComponents();
         addNewNoteInDatabase();
-        addChangePriorityLevel();
+        onRedPriorityClick();
+        onYellowPriorityClick();
+        onGreenPriorityClick();
     }
 
     private void initializationViewComponents() {
@@ -42,28 +45,28 @@ public class InsertNotesActivity extends AppCompatActivity {
     }
 
 
-    //TODO refactoring his fragment code later
-
-    private void addChangePriorityLevel() {
-
+    public void onRedPriorityClick(){
         insertBinding.redPriority.setOnClickListener(v -> {
             priorityCommand = new HighInsertPriorityCommand();
             priorityCommand.changePriorityView(insertBinding);
             priorityLevel =  priorityCommand.getPriorityLevel();
         });
+    }
 
+    public void onYellowPriorityClick(){
         insertBinding.yellowPriority.setOnClickListener(v -> {
             priorityCommand = new MediumInsertPriorityCommand();
             priorityCommand.changePriorityView(insertBinding);
             priorityLevel =  priorityCommand.getPriorityLevel();
         });
+    }
 
+    public void onGreenPriorityClick(){
         insertBinding.greenPriority.setOnClickListener(v -> {
             priorityCommand = new LowInsertPriorityCommand();
             priorityCommand.changePriorityView(insertBinding);
             priorityLevel =  priorityCommand.getPriorityLevel();
         });
-
     }
 
     private void addNewNoteInDatabase() {

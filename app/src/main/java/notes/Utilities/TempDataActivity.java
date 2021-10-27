@@ -14,16 +14,13 @@ import notes.Activity.UpdateNotesActivity;
 import notes.Adapter.Child.NotesAdapter;
 import notes.Intefaces.*;
 import notes.Model.Notes;
+import notes.ViewModel.NotesViewModel;
 
 public class TempDataActivity extends AppCompatActivity implements EditNoteListener, OpenDetailBottomSheetListener {
 
     protected DetailsBottomSheetActivity detailsActivity;
     public static final String NOTES_DATA_KEY = "NOTES_DATA";
 
-
-    protected void initializationComponents(){
-        this.detailsActivity = new DetailsBottomSheetActivity(this);
-    }
 
     @Override
     public void onNoteEdit(Notes note) {
@@ -36,7 +33,35 @@ public class TempDataActivity extends AppCompatActivity implements EditNoteListe
     public void onOpenSheet(Notes note) {
         if (this.detailsActivity != null) {
             this.detailsActivity.onStartBottomSheetActivity(note);
+            this.detailsActivity = new DetailsBottomSheetActivity(this);
         }
+    }
+
+    protected void getAllNotes(NotesViewModel notesViewModel,
+                               List<Notes> notesData, NotesAdapter notesAdapter) {
+        notesViewModel.getAllNotes().observe(this, notes -> {
+            notesData.clear();
+            notesData.addAll(notes);
+            notesAdapter.notifyDataSetChanged();
+        });
+    }
+
+    protected void getLowToHighNotes(NotesViewModel notesViewModel,
+                                     List<Notes> notesData, NotesAdapter notesAdapter) {
+        notesViewModel.getLowToHighNotes().observe(this, notes -> {
+            notesData.clear();
+            notesData.addAll(notes);
+            notesAdapter.notifyDataSetChanged();
+        });
+    }
+
+    protected void getHighToLowNotes(NotesViewModel notesViewModel,
+                                     List<Notes> notesData, NotesAdapter notesAdapter) {
+        notesViewModel.getHighToLowNotes().observe(this, notes -> {
+            notesData.clear();
+            notesData.addAll(notes);
+            notesAdapter.notifyDataSetChanged();
+        });
     }
 
 

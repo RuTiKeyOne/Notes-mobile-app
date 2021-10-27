@@ -1,5 +1,7 @@
 package notes.Activity;
 
+import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import androidx.databinding.DataBindingUtil;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -19,6 +21,7 @@ public class DetailsBottomSheetActivity{
     public DetailsBottomSheetActivity(TempDataActivity activity) {
         initializationComponents(activity);
         onClickedEdit();
+        onCancelDialog();
     }
 
     private void initializationComponents(TempDataActivity activity){
@@ -31,6 +34,7 @@ public class DetailsBottomSheetActivity{
         bottomDialog.setContentView(detailsBinding.getRoot());
         this.listener = activity;
 
+
     }
 
     private void onClickedEdit(){
@@ -40,6 +44,10 @@ public class DetailsBottomSheetActivity{
                 onDismissDetailsButtonSheet();
             }
         });
+    }
+
+    private void onCancelDialog(){
+        bottomDialog.setOnCancelListener(dialogInterface -> onDismissDetailsButtonSheet());
     }
 
     public void onStartBottomSheetActivity(Notes note){

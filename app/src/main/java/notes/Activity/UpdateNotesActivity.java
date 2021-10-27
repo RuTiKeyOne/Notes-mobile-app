@@ -1,21 +1,26 @@
 package notes.Activity;
 
 import static notes.Utilities.TempDataViewModel.NOTE_INTENT_KEY;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
+
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+
 import com.notes.R;
 import com.notes.databinding.ActivityUpdateNotesBinding;
+
 import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Base.BaseUpdateCommand;
 import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.*;
 import notes.Intefaces.DeleteNoteListener;
+import notes.Intefaces.onChangePriorityView;
 import notes.Model.Notes;
 import notes.ViewModel.NotesViewModel;
 
-public class UpdateNotesActivity extends AppCompatActivity implements DeleteNoteListener {
+public class UpdateNotesActivity extends AppCompatActivity implements DeleteNoteListener, onChangePriorityView {
 
     private ActivityUpdateNotesBinding updateBinding;
     private NotesViewModel notesViewModel;
@@ -35,7 +40,9 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
         setInitialDataView();
         getUpdatedDataWithInput();
         onDeleteNoteClick();
-        addChangePriorityLevel();
+        onRedPriorityClick();
+        onYellowPriorityClick();
+        onGreenPriorityClick();
         updatedNote();
 
     }
@@ -80,28 +87,31 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
         return updatedNote;
     }
 
-    //TODO refactoring his fragment code later
-
-    private void addChangePriorityLevel() {
-
+    @Override
+    public void onRedPriorityClick() {
         updateBinding.redPriority.setOnClickListener(v -> {
             changePriorityCommand = new HighUpdatePriorityCommand();
             changePriorityCommand.changePriorityView(updateBinding);
             priorityLevel = changePriorityCommand.getPriorityLevel();
         });
+    }
 
+    @Override
+    public void onYellowPriorityClick() {
         updateBinding.yellowPriority.setOnClickListener(v -> {
             changePriorityCommand = new MediumUpdatePriorityCommand();
             changePriorityCommand.changePriorityView(updateBinding);
             priorityLevel = changePriorityCommand.getPriorityLevel();
         });
+    }
 
+    @Override
+    public void onGreenPriorityClick() {
         updateBinding.greenPriority.setOnClickListener(v -> {
             changePriorityCommand = new LowUpdatePriorityCommand();
             changePriorityCommand.changePriorityView(updateBinding);
             priorityLevel = changePriorityCommand.getPriorityLevel();
         });
-
     }
 
     private void getUpdatedDataWithInput() {
@@ -173,7 +183,7 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
         });
     }
 
-    private void onDeleteNoteClick(){
+    private void onDeleteNoteClick() {
         updateBinding.imageDelete.setOnClickListener(v -> {
             bottomSheetActivity.onShowDeleteBottomSheet();
         });
@@ -184,4 +194,5 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
         notesViewModel.deleteNoteById(note.getId());
         onBackPressed();
     }
+
 }

@@ -35,7 +35,7 @@ public class SearchActivity extends TempDataActivity {
     protected void onRestart() {
         super.onRestart();
         notesData.clear();
-        getAllNotes();
+        getAllNotes(notesViewModel, notesData, notesAdapter);
     }
 
     @Override
@@ -44,8 +44,7 @@ public class SearchActivity extends TempDataActivity {
         notesData.clear();
     }
 
-    @Override
-    protected void initializationComponents() {
+    private void initializationComponents() {
         notesData = (List<Notes>) getIntent().getSerializableExtra(NOTES_DATA_KEY);
         notesAdapter = new NotesAdapter(notesData, this);
         this.detailsActivity = new DetailsBottomSheetActivity(this);
@@ -76,7 +75,7 @@ public class SearchActivity extends TempDataActivity {
                     searchText = editable.toString();
                     getSearchedNotes();
                 } else {
-                    getAllNotes();
+                    getAllNotes(notesViewModel, notesData, notesAdapter);
                 }
             }
         });
@@ -103,12 +102,5 @@ public class SearchActivity extends TempDataActivity {
         });
     }
 
-    //TODO повторение кода из MainActivity
-    private void getAllNotes() {
-        notesData.clear();
-        notesViewModel.getAllNotes().observe(this, notes -> {
-            notesData.addAll(notes);
-            notesAdapter.notifyDataSetChanged();
-        });
-    }
+
 }

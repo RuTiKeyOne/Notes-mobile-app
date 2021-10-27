@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -36,20 +36,38 @@
             android:layout_margin="10dp"
             android:background="@drawable/detele_indictor_shape"/>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{title}"
-            android:textAllCaps="true"
-            android:maxLines="1"
-            android:fontFamily="@font/product_sans_bold"
-            android:textSize="32sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/black"
-            />
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@{title}"
+                android:textAllCaps="true"
+                android:maxLines="1"
+                android:fontFamily="@font/product_sans_bold"
+                android:textSize="32sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/black"
+                />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/editNoteButton"
+                android:layout_width="60dp"
+                android:layout_height="55dp"
+                android:backgroundTint="@color/red"
+                android:src="@drawable/ic_edit"
+                android:layout_gravity="end"
+                android:layout_margin="20dp"
+                app:tint="@color/white" />
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -77,6 +95,11 @@
             android:textColor="@color/black"
             />
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,15 +112,7 @@
             android:textColor="@color/black"
             />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/editNoteButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/red"
-            android:src="@drawable/ic_edit"
-            android:layout_gravity="end"
-            android:layout_margin="20dp"
-            app:tint="@color/white" />
+        </ScrollView>
 
     </LinearLayout>
 

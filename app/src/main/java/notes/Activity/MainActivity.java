@@ -29,7 +29,7 @@ public class MainActivity extends TempDataActivity {
         super.onCreate(savedInstanceState);
         initializationComponents();
         initializationViewComponents();
-        getAllNotes();
+        getAllNotes(notesViewModel, notesData, notesAdapter);
         addNewNoteClickBehaviour();
         onClickSearch();
         onClickNoFilter();
@@ -40,7 +40,7 @@ public class MainActivity extends TempDataActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        getAllNotes();
+        getAllNotes(notesViewModel, notesData, notesAdapter);
         mainActivityCommand.onSetDefaultNoFilterView(mainBinding);
     }
 
@@ -57,8 +57,7 @@ public class MainActivity extends TempDataActivity {
         mainActivityCommand.setDefaultFilter(mainBinding);
     }
 
-    @Override
-    protected void initializationComponents() {
+    private void initializationComponents() {
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
         notesAdapter = new NotesAdapter(notesData, this);
         this.detailsActivity = new DetailsBottomSheetActivity(this);
@@ -79,46 +78,22 @@ public class MainActivity extends TempDataActivity {
 
     private void onClickNoFilter() {
         mainBinding.noFilter.setOnClickListener(v -> {
-            getAllNotes();
+            getAllNotes(notesViewModel, notesData, notesAdapter);
             mainActivityCommand.onSetDefaultNoFilterView(mainBinding);
-        });
-    }
-
-    private void getAllNotes() {
-        notesViewModel.getAllNotes().observe(this, notes -> {
-            notesData.clear();
-            notesData.addAll(notes);
-            notesAdapter.notifyDataSetChanged();
         });
     }
 
     private void onClickHighToLowFilter() {
         mainBinding.highToLow.setOnClickListener(v -> {
-            getHighToLowNotes();
+            getHighToLowNotes(notesViewModel, notesData, notesAdapter);
             mainActivityCommand.onSetHighToLowFilterView(mainBinding);
-        });
-    }
-
-    private void getHighToLowNotes() {
-        notesViewModel.getHighToLowNotes().observe(this, notes -> {
-            notesData.clear();
-            notesData.addAll(notes);
-            notesAdapter.notifyDataSetChanged();
         });
     }
 
     private void onClickLowToHighFilter() {
         mainBinding.lowToHigh.setOnClickListener(v -> {
-            getLowToHighNotes();
+            getLowToHighNotes(notesViewModel, notesData, notesAdapter);
             mainActivityCommand.onSetLowToHighFilterView(mainBinding);
-        });
-    }
-
-    private void getLowToHighNotes() {
-        notesViewModel.getLowToHighNotes().observe(this, notes -> {
-            notesData.clear();
-            notesData.addAll(notes);
-            notesAdapter.notifyDataSetChanged();
         });
     }
 

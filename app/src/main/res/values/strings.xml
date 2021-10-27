@@ -15,4 +15,6 @@
     <string name="high_to_low">High to low</string>
     <string name="low_to_high">Low to high</string>
     <string name="search">Search</string>
+    <string name="add_note">Add note</string>
+    <string name="edit_note">Edit note</string>
 </resources>

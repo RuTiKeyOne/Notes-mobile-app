@@ -3,9 +3,19 @@
     <string name="app_name">Заметки</string>
     <string name="by_author">Разработчик\n Андрей Ершов</string>
     <string name="notes_app">Заметки</string>
-    <string name="phrase_app">Life is too Fast don\'t forget anything\n just Note it!</string>
+    <string name="phrase_app">Жизнь слишком быстра, не забывай ничего\n просто запиши это!</string>
     <string name="title">Заголовок</string>
     <string name="subtitle">Подзаголовок</string>
     <string name="notes">Запись</string>
     <string name="priority">Приоритет</string>
+    <string name="date">22 Окт 2021</string>
+    <string name="are_want_delete_item">Вы действительно хотите удалить\n эту заметку?</string>
+    <string name="no">Нет</string>
+    <string name="yes">Да</string>
+    <string name="no_filter">Без фильтра</string>
+    <string name="high_to_low">Выс. к низ.</string>
+    <string name="low_to_high">Низ. к выс.</string>
+    <string name="search">Поиск</string>
+    <string name="add_note">Добавить заметку</string>
+    <string name="edit_note">Редактировать заметку</string>
 </resources>

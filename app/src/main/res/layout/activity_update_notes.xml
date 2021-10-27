@@ -47,7 +47,7 @@
                 android:fontFamily="@font/product_sans_regular"
                 android:includeFontPadding="false"
                 android:maxLines="1"
-                android:text="@string/app_name"
+                android:text="@string/edit_note"
                 android:textColor="@color/white"
                 android:textSize="20sp"/>
 
@@ -63,6 +63,7 @@
 
         </LinearLayout>
 
+
         <LinearLayout
             android:layout_below="@id/layoutHeader"
             android:layout_width="match_parent"
@@ -71,6 +72,7 @@
 
             <EditText
                 android:id="@+id/inputTitle"
+                android:maxLines="1"
                 android:text="@{title}"
                 style="@style/InsertItemMargin"
                 android:layout_width="match_parent"
@@ -83,6 +85,7 @@
             <EditText
                 android:id="@+id/inputSubTitle"
                 android:text="@{subTitle}"
+                android:maxLines="2"
                 style="@style/InsertItemMargin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -132,33 +135,39 @@
 
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/inputData"
-                android:text="@{notes}"
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:background="@drawable/edit_text_background"
-                android:padding="15dp"
-                android:gravity="start"
-                style="@style/InsertItemMargin"
-                android:hint="@string/notes"
-                android:fontFamily="@font/product_sans_regular"/>
-        </LinearLayout>
+                android:fillViewport="true">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/updateNotesButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="26dp"
-            app:tint="@color/white"
-            android:layout_marginTop="26dp"
-            android:layout_marginEnd="26dp"
-            android:layout_marginBottom="26dp"
-            android:backgroundTint="@color/red"
-            android:src="@drawable/ic_update" />
+                <EditText
+                    android:id="@+id/inputData"
+                    style="@style/InsertItemMargin"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:gravity="start"
+                    android:hint="@string/notes"
+                    android:padding="15dp"
+                    android:text="@{notes}" />
+
+            </ScrollView>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/updateNotesButton"
+                android:layout_width="60dp"
+                android:layout_height="55dp"
+                android:layout_gravity="end"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginEnd="26dp"
+                android:layout_marginBottom="26dp"
+                android:backgroundTint="@color/red"
+                android:src="@drawable/ic_update"
+                app:tint="@color/white" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 </layout>
