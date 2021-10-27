@@ -12,7 +12,7 @@
     <string name="are_want_delete_item">Вы действительно хотите удалить\n эту заметку?</string>
     <string name="no">Нет</string>
     <string name="yes">Да</string>
-    <string name="no_filter">Без фильтра</string>
+    <string name="no_filter">Без фил.</string>
     <string name="high_to_low">Выс. к низ.</string>
     <string name="low_to_high">Низ. к выс.</string>
     <string name="search">Поиск</string>

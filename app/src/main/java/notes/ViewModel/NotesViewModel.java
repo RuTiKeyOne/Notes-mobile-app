@@ -9,6 +9,7 @@ import java.util.List;
 
 public class NotesViewModel extends AndroidViewModel {
 
+
     private NotesRepository repository;
 
     public NotesViewModel(@NonNull Application application) {
