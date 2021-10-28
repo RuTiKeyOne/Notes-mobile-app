@@ -64,7 +64,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/notesRecycleView"
+            android:id="@+id/searchNotesRecycleView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:clipToPadding="false"

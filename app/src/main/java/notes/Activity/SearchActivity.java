@@ -54,8 +54,8 @@ public class SearchActivity extends TempDataActivity {
 
     private void initializationComponentsView() {
         searchBinding = DataBindingUtil.setContentView(this, R.layout.activity_search);
-        searchBinding.notesRecycleView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        searchBinding.notesRecycleView.setAdapter(notesAdapter);
+        searchBinding.searchNotesRecycleView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        searchBinding.searchNotesRecycleView.setAdapter(notesAdapter);
     }
 
 

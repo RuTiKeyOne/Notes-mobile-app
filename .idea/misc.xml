@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/rutikeyone/AndroidStudioProjects/Notes/app/src/main/res/drawable/background_filter.xml" value="0.1046875" />
+        <entry key="..\:/Users/rutikeyone/AndroidStudioProjects/Notes/app/src/main/res/drawable/filter_selected_un_shape.xml" value="0.1046875" />
+        <entry key="..\:/Users/rutikeyone/AndroidStudioProjects/Notes/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/rutikeyone/AndroidStudioProjects/Notes/app/src/main/res/layout/activity_search.xml" value="0.4" />
         <entry key="..\:/Users/rutikeyone/AndroidStudioProjects/Notes/app/src/main/res/layout/delete_bottom_sheet.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/rutikeyone/AndroidStudioProjects/Notes/app/src/main/res/layout/null_input_insert_bottom.xml" value="0.2513586956521739" />
       </map>
