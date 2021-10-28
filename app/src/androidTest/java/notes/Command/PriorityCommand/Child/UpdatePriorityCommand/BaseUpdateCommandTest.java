@@ -14,19 +14,5 @@ import notes.Command.PriorityCommand.Child.UpdatePriorityCommand.Parent.MediumUp
 
 public class BaseUpdateCommandTest {
 
-    @Test
-    public void isHighUpdatePriorityCommandReturnTruePriorityLevel(){
-        assertEquals(HIGH_PRIORITY_KEY, new HighUpdatePriorityCommand().getPriorityLevel());
-    }
-
-    @Test
-    public void isLowUpdatePriorityCommandReturnTruePriorityLevel(){
-        assertEquals(LOW_PRIORITY_KEY, new LowUpdatePriorityCommand().getPriorityLevel());
-    }
-
-    @Test
-    public void isMediumUpdatePriorityCommandReturnTruePriorityLevel(){
-        assertEquals(MEDIUM_PRIORITY_KEY, new MediumUpdatePriorityCommand().getPriorityLevel());
-    }
 
 }

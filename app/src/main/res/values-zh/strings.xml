@@ -18,4 +18,6 @@
     <string name="search">搜索</string>
     <string name="add_note">添加注释</string>
     <string name="edit_note">编辑注释</string>
+    <string name="ok">好的</string>
+    <string name="null_title_or_note">您不能将标题或条目字段留空。</string>
 </resources>

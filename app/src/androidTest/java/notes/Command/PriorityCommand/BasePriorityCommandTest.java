@@ -13,19 +13,4 @@ import notes.Command.PriorityCommand.Child.InsertPriorityCommand.MediumInsertPri
 
 public class BasePriorityCommandTest {
 
-    @Test
-    public void isHighInsertPriorityCommandReturnTruePriorityLevel(){
-        assertEquals(HIGH_PRIORITY_KEY, new HighInsertPriorityCommand().getPriorityLevel());
-    }
-
-    @Test
-    public void isLowInsertPriorityCommandReturnTruePriorityLevel(){
-        assertEquals(LOW_PRIORITY_KEY, new LowInsertPriorityCommand().getPriorityLevel());
-    }
-
-    @Test
-    public void isMediumInsertPriorityCommandReturnTruePriorityLevel(){
-        assertEquals(MEDIUM_PRIORITY_KEY, new MediumInsertPriorityCommand().getPriorityLevel());
-    }
-
 }

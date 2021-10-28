@@ -17,4 +17,6 @@
     <string name="search">Search</string>
     <string name="add_note">Add note</string>
     <string name="edit_note">Edit note</string>
+    <string name="ok">Ok</string>
+    <string name="null_title_or_note">You can\'t leave title or note empty.</string>
 </resources>

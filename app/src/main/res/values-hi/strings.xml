@@ -18,4 +18,6 @@
     <string name="search">खोजिए</string>
     <string name="add_note">एक नोट जोड़ें</string>
     <string name="edit_note">नोट संपादित करें</string>
+    <string name="ok">ठीक है।</string>
+    <string name="null_title_or_note">आप शीर्षक या प्रविष्टि फ़ील्ड को खाली नहीं छोड़ सकते । </string>
 </resources>
