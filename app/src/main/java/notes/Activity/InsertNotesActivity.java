@@ -26,7 +26,6 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
     private NullTitleOrNoteSheetActivity nullActivity;
     private int priorityLevel;
     private String title;
-    private String subTitle;
     private String notes;
 
     @Override
@@ -87,8 +86,7 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
     }
 
     private boolean IsTitleOrNoteNotNull() {
-        return !insertBinding.notesTitle.getText().toString().isEmpty() &&
-                !insertBinding.notesData.getText().toString().isEmpty();
+        return !insertBinding.notesTitle.getText().toString().isEmpty();
     }
 
     private void createNote(Notes note) {
@@ -98,15 +96,13 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
 
     private Notes getNotesData() {
         title = insertBinding.notesTitle.getText().toString();
-        subTitle = insertBinding.notesSubTitle.getText().toString();
         notes = insertBinding.notesData.getText().toString();
-        return getNote(title, subTitle, notes);
+        return getNote(title,notes);
     }
 
-    private Notes getNote(String title, String subTitle, String notes) {
+    private Notes getNote(String title, String notes) {
         Notes note = new Notes();
         note.setNotesTitle(title);
-        note.setNotesSubTitle(subTitle);
         note.setNotes(notes);
         note.setNotesDate(getDate());
         note.setNotesPriority(priorityLevel);

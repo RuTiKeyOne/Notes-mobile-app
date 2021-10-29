@@ -72,7 +72,7 @@
 
             <EditText
                 android:id="@+id/inputTitle"
-                android:maxLines="1"
+                android:maxLines="2"
                 android:text="@{title}"
                 style="@style/InsertItemMargin"
                 android:layout_width="match_parent"
@@ -82,17 +82,6 @@
                 android:fontFamily="@font/product_sans_regular"
                 android:hint="@string/title" />
 
-            <EditText
-                android:id="@+id/inputSubTitle"
-                android:text="@{subTitle}"
-                android:maxLines="2"
-                style="@style/InsertItemMargin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_background"
-                android:padding="15dp"
-                android:fontFamily="@font/product_sans_regular"
-                android:hint="@string/subtitle" />
 
             <LinearLayout
                 android:id="@+id/notesPriority"

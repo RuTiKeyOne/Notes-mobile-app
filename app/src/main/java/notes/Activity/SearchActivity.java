@@ -87,8 +87,7 @@ public class SearchActivity extends TempDataActivity {
         oldNotes.addAll(notesData);
         notesData.clear();
         for (Notes note : oldNotes) {
-            if (note.getNotesTitle().toLowerCase(Locale.ROOT).contains(searchText.toLowerCase(Locale.ROOT))
-                    || note.getNotesSubTitle().toLowerCase(Locale.ROOT).contains(searchText.toLowerCase(Locale.ROOT))) {
+            if (note.getNotesTitle().toLowerCase(Locale.ROOT).contains(searchText.toLowerCase(Locale.ROOT))){
                 notesData.add(note);
             }
         }

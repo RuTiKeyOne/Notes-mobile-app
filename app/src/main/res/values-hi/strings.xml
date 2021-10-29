@@ -5,7 +5,6 @@
     <string name="notes_app">नोट्स</string>
     <string name="phrase_app">जीवन बहुत तेज है, कुछ भी मत भूलना\n बस इसे लिखो!</string>
     <string name="title">शीर्षक</string>
-    <string name="subtitle">उपशीर्षक</string>
     <string name="notes">रिकॉर्ड</string>
     <string name="priority">प्राथमिकता</string>
     <string name="date">22 अक्टूबर 2021</string>
@@ -19,5 +18,5 @@
     <string name="add_note">एक नोट जोड़ें</string>
     <string name="edit_note">नोट संपादित करें</string>
     <string name="ok">ठीक है।</string>
-    <string name="null_title_or_note">आप शीर्षक या प्रविष्टि फ़ील्ड को खाली नहीं छोड़ सकते । </string>
+    <string name="null_title">आप शीर्षक को खाली नहीं छोड़ सकते ।  </string>
 </resources>

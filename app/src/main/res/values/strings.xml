@@ -4,7 +4,6 @@
     <string name="notes_app">Notes App</string>
     <string name="phrase_app">Life is too Fast don\'t forget anything\n just Note it!</string>
     <string name="title">Title...</string>
-    <string name="subtitle">SubTitle</string>
     <string name="notes">Notes</string>
     <string name="priority">Priority</string>
     <string name="date">22 Oct 2021</string>
@@ -18,5 +17,5 @@
     <string name="add_note">Add note</string>
     <string name="edit_note">Edit note</string>
     <string name="ok">Ok</string>
-    <string name="null_title_or_note">You can\'t leave title or note empty.</string>
+    <string name="null_title">You can\'t leave title empty.</string>
 </resources>

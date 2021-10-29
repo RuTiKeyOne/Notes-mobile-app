@@ -50,7 +50,6 @@ public class NotesAdapterCommand extends BaseAdapterCommand<Notes> {
     private void setDataNote(Notes data, ViewDataBinding dataBinding) {
         if (dataBinding instanceof ItemNotesBinding) {
             getItemNotesBindingWithViewDataBinding(dataBinding).setTitle(data.notesTitle);
-            getItemNotesBindingWithViewDataBinding(dataBinding).setSubTitle(data.notesSubTitle);
             getItemNotesBindingWithViewDataBinding(dataBinding).setDate(data.notesDate);
         }
     }

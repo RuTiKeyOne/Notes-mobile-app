@@ -50,7 +50,7 @@
 
             <EditText
                 android:id="@+id/notesTitle"
-                android:maxLines="1"
+                android:maxLines="2"
                 style="@style/InsertItemMargin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,16 +59,6 @@
                 android:fontFamily="@font/product_sans_regular"
                 android:hint="@string/title" />
 
-            <EditText
-                android:id="@+id/notesSubTitle"
-                style="@style/InsertItemMargin"
-                android:maxLines="2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_background"
-                android:padding="15dp"
-                android:fontFamily="@font/product_sans_regular"
-                android:hint="@string/subtitle" />
 
             <LinearLayout
                 android:id="@+id/notesPriority"

@@ -5,7 +5,6 @@
     <string name="notes_app">Заметки</string>
     <string name="phrase_app">Жизнь слишком быстра, не забывай ничего\n просто запиши это!</string>
     <string name="title">Заголовок</string>
-    <string name="subtitle">Подзаголовок</string>
     <string name="notes">Запись</string>
     <string name="priority">Приоритет</string>
     <string name="date">22 Окт 2021</string>
@@ -19,5 +18,5 @@
     <string name="add_note">Добавить заметку</string>
     <string name="edit_note">Редактировать заметку</string>
     <string name="ok">Ок</string>
-    <string name="null_title_or_note">Вы не можете оставить заголовок или поле для записи пустыми.</string>
+    <string name="null_title">Вы не можете оставить заголовок пустым.</string>
 </resources>

@@ -5,7 +5,6 @@
     <string name="notes_app">注意事项</string>
     <string name="phrase_app">人生太快了，什么都别忘了\n写下来就好！</string>
     <string name="title">航向</string>
-    <string name="subtitle">字幕</string>
     <string name="notes">记录</string>
     <string name="priority">优先次序</string>
     <string name="date">2021年10月22日</string>
@@ -19,5 +18,5 @@
     <string name="add_note">添加注释</string>
     <string name="edit_note">编辑注释</string>
     <string name="ok">好的</string>
-    <string name="null_title_or_note">您不能将标题或条目字段留空。</string>
+    <string name="null_title">你不能把标题留空.</string>
 </resources>

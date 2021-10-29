@@ -28,7 +28,6 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
     private DeleteBottomSheetActivity bottomSheetActivity;
     private Notes note;
     private String title;
-    private String subTitle;
     private String notes;
     private int priorityLevel;
 
@@ -52,7 +51,6 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
         note = (Notes) getIntent().getSerializableExtra(NOTE_INTENT_KEY);
         title = note.getNotesTitle();
-        subTitle = note.getNotesSubTitle();
         notes = note.getNotes();
         priorityLevel = note.getNotesPriority();
         changePriorityCommand = new HighUpdatePriorityCommand();
@@ -66,7 +64,6 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
     private void setInitialDataView() {
         if (note != null) {
             updateBinding.setTitle(note.notesTitle);
-            updateBinding.setSubTitle(note.notesSubTitle);
             updateBinding.setNotes(note.notes);
         }
     }
@@ -81,7 +78,6 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
     private Notes getUpdatedNote() {
         Notes updatedNote = this.note;
         updatedNote.setNotesTitle(title);
-        updatedNote.setNotesSubTitle(subTitle);
         updatedNote.setNotes(notes);
         updatedNote.setNotesPriority(priorityLevel);
         return updatedNote;
@@ -116,7 +112,6 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
 
     private void getUpdatedDataWithInput() {
         getUpdatedTitle();
-        getUpdatedSubTitle();
         getUpdatedNotes();
     }
 
@@ -141,26 +136,6 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
         });
     }
 
-    private void getUpdatedSubTitle() {
-        updateBinding.inputSubTitle.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (!editable.toString().isEmpty()) {
-                    subTitle = editable.toString();
-                } else {
-                    subTitle = note.getNotesSubTitle();
-                }
-            }
-        });
-    }
 
     private void getUpdatedNotes() {
         updateBinding.inputData.addTextChangedListener(new TextWatcher() {

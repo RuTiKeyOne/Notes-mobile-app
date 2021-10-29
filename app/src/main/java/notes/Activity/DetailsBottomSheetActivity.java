@@ -62,7 +62,6 @@ public class DetailsBottomSheetActivity{
     private void onSetInitialDataInView(Notes note){
         this.note = note;
         detailsBinding.setTitle(this.note.getNotesTitle());
-        detailsBinding.setSubTitle(this.note.getNotesSubTitle());
         detailsBinding.setDate(this.note.getNotesDate());
         detailsBinding.setNote(this.note.getNotes());
     }

@@ -17,10 +17,6 @@ public class Notes implements Serializable {
     @SerializedName("notes_title")
     public String notesTitle;
 
-    @ColumnInfo(name = "notes_subtitle")
-    @SerializedName("notes_sub_title")
-    public String notesSubTitle;
-
     @ColumnInfo(name = "notes_date")
     @SerializedName("notes_date")
     public String notesDate;
@@ -45,10 +41,6 @@ public class Notes implements Serializable {
         this.notesTitle = notesTitle;
     }
 
-    public void setNotesSubTitle(String notesSubTitle) {
-        this.notesSubTitle = notesSubTitle;
-    }
-
     public void setNotesDate(String notesDate) {
         this.notesDate = notesDate;
     }
@@ -63,10 +55,6 @@ public class Notes implements Serializable {
 
     public String getNotesTitle() {
         return notesTitle;
-    }
-
-    public String getNotesSubTitle() {
-        return notesSubTitle;
     }
 
     public String getNotesDate() {

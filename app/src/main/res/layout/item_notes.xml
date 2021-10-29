@@ -9,10 +9,6 @@
             type="String"/>
 
         <variable
-            name="subTitle"
-            type="String"/>
-
-        <variable
             name="date"
             type="String"/>
 
@@ -44,29 +40,20 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:textAllCaps="true"
                     android:id="@+id/notesTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="25dp"
                     android:fontFamily="@font/product_sans_regular"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:text="@{title}" />
-
-                <TextView
-                    android:id="@+id/notesSubTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:padding="5dp"
-                    android:text="@{subTitle}" />
 
                 <TextView
                     android:id="@+id/notesDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/product_sans_bold"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:text="@{date}"
                     android:textColor="@color/black" />
 
