@@ -38,6 +38,7 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
         initializationViewComponents();
         setInitialDataView();
         getUpdatedDataWithInput();
+        onBackClick();
         onDeleteNoteClick();
         onRedPriorityClick();
         onYellowPriorityClick();
@@ -155,6 +156,12 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
                     notes = note.getNotes();
                 }
             }
+        });
+    }
+
+    private void onBackClick(){
+        updateBinding.editImageBack.setOnClickListener(v -> {
+            finish();
         });
     }
 

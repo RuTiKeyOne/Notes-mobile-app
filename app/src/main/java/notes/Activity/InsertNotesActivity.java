@@ -34,6 +34,7 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
         initializationViewComponents();
         initializationComponents();
         addNewNoteInDatabase();
+        onBackClick();
         onRedPriorityClick();
         onYellowPriorityClick();
         onGreenPriorityClick();
@@ -48,6 +49,12 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
         priorityCommand = new HighInsertPriorityCommand();
         priorityLevel = priorityCommand.getPriorityLevel();
         nullActivity = new NullTitleOrNoteSheetActivity(this);
+    }
+
+    private void onBackClick(){
+        insertBinding.addImageBack.setOnClickListener(v -> {
+            finish();
+        });
     }
 
 
