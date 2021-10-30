@@ -8,6 +8,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/splashScreenMainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.notes.Activity.SplashScreen">
@@ -52,7 +53,7 @@
         <ProgressBar
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:id="@+id/progressBar"
+            android:id="@+id/mainProgressBar"
             android:indeterminateTint="@color/red"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
