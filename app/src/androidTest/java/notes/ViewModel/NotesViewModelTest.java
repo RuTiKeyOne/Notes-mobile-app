@@ -37,9 +37,7 @@ public class NotesViewModelTest extends TestCase {
     }
 
     @Test
-    public void getAllNotesTest(){
-        assertNotNull(notesViewModel.getAllNotes());
-    }
+    public void getAllNotesTest(){ assertNotNull(notesViewModel.getAllNotes()); }
 
     @Test
     public void getHighToLowTest(){

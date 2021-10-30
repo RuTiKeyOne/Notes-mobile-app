@@ -22,6 +22,26 @@ public class SearchActivity extends TempDataActivity {
     private List<Notes> notesData = new ArrayList<>();
     private String searchText;
 
+    public ActivitySearchBinding getSearchBinding() {
+        return searchBinding;
+    }
+
+    public NotesViewModel getNotesViewModel() {
+        return notesViewModel;
+    }
+
+    public NotesAdapter getNotesAdapter() {
+        return notesAdapter;
+    }
+
+    public List<Notes> getNotesData() {
+        return notesData;
+    }
+
+    public String getSearchText() {
+        return searchText;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +64,7 @@ public class SearchActivity extends TempDataActivity {
         notesData.clear();
     }
 
-    private void initializationComponents() {
+    public void initializationComponents() {
         notesData = (List<Notes>) getIntent().getSerializableExtra(NOTES_DATA_KEY);
         notesAdapter = new NotesAdapter(notesData, this);
         this.detailsActivity = new DetailsBottomSheetActivity(this);
@@ -52,7 +72,7 @@ public class SearchActivity extends TempDataActivity {
 
     }
 
-    private void initializationComponentsView() {
+    public void initializationComponentsView() {
         searchBinding = DataBindingUtil.setContentView(this, R.layout.activity_search);
         searchBinding.searchNotesRecycleView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         searchBinding.searchNotesRecycleView.setAdapter(notesAdapter);
