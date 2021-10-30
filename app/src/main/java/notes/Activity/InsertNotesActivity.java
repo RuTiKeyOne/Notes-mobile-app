@@ -28,11 +28,33 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
     private String title;
     private String notes;
 
+    public ActivityInsertNotesBinding getInsertBinding() {
+        return insertBinding;
+    }
+
+    public NotesViewModel getNotesViewModel() {
+        return notesViewModel;
+    }
+
+    public BasePriorityCommand getPriorityCommand() {
+        return priorityCommand;
+    }
+
+    public int getPriorityLevel() {
+        return priorityLevel;
+    }
+
+    public NullTitleOrNoteSheetActivity getNullActivity() {
+        return nullActivity;
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initializationViewComponents();
         initializationComponents();
+        initializationViewComponents();
         addNewNoteInDatabase();
         onBackClick();
         onRedPriorityClick();
@@ -40,18 +62,18 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
         onGreenPriorityClick();
     }
 
-    private void initializationViewComponents() {
-        insertBinding = DataBindingUtil.setContentView(this, R.layout.activity_insert_notes);
-    }
-
-    private void initializationComponents() {
+    public void initializationComponents() {
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
         priorityCommand = new HighInsertPriorityCommand();
         priorityLevel = priorityCommand.getPriorityLevel();
         nullActivity = new NullTitleOrNoteSheetActivity(this);
     }
 
-    private void onBackClick(){
+    public void initializationViewComponents() {
+        insertBinding = DataBindingUtil.setContentView(this, R.layout.activity_insert_notes);
+    }
+
+    public void onBackClick(){
         insertBinding.addImageBack.setOnClickListener(v -> {
             finish();
         });
@@ -82,9 +104,9 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
         });
     }
 
-    private void addNewNoteInDatabase() {
+    public void addNewNoteInDatabase() {
         insertBinding.doneNotesButton.setOnClickListener(v -> {
-            if (IsTitleOrNoteNotNull()) {
+            if (isTitleNotEmpty()) {
                 createNote(getNotesData());
             } else {
                 nullActivity.onShowNullTitleOrNoteSheet();
@@ -92,7 +114,7 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
         });
     }
 
-    private boolean IsTitleOrNoteNotNull() {
+    public boolean isTitleNotEmpty() {
         return !insertBinding.notesTitle.getText().toString().isEmpty();
     }
 
@@ -101,7 +123,7 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
         finish();
     }
 
-    private Notes getNotesData() {
+    public Notes getNotesData() {
         title = insertBinding.notesTitle.getText().toString();
         notes = insertBinding.notesData.getText().toString();
         return getNote(title,notes);
@@ -116,7 +138,7 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
         return note;
     }
 
-    private String getDate() {
+    public String getDate() {
         Date date = new Date();
         CharSequence dataSequence = DateFormat.format("EEE, MMM d, ''yy", date.getTime());
         return dataSequence.toString();

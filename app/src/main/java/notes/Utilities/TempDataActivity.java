@@ -37,6 +37,10 @@ public class TempDataActivity extends AppCompatActivity implements EditNoteListe
         }
     }
 
+    public DetailsBottomSheetActivity getDetailsActivity() {
+        return detailsActivity;
+    }
+
     protected void getAllNotes(NotesViewModel notesViewModel,
                                List<Notes> notesData, NotesAdapter notesAdapter) {
         notesViewModel.getAllNotes().observe(this, notes -> {
