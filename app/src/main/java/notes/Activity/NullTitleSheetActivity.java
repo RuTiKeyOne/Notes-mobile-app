@@ -10,17 +10,25 @@ import com.notes.R;
 import com.notes.databinding.NullInputInsertBottomBinding;
 import notes.Intefaces.NullTitleOrNoteListener;
 
-public class NullTitleOrNoteSheetActivity {
+public class NullTitleSheetActivity {
 
     private BottomSheetDialog bottomDialog;
     private NullInputInsertBottomBinding nullInputBinding;
 
-    public NullTitleOrNoteSheetActivity(InsertNotesActivity insertActivity) {
+    public BottomSheetDialog getBottomDialog() {
+        return bottomDialog;
+    }
+
+    public NullInputInsertBottomBinding getNullInputBinding() {
+        return nullInputBinding;
+    }
+
+    public NullTitleSheetActivity(InsertNotesActivity insertActivity) {
         initializationComponents(insertActivity);
         onClickOk();
     }
 
-    private void initializationComponents(InsertNotesActivity insertActivity) {
+    public void initializationComponents(InsertNotesActivity insertActivity) {
         bottomDialog = new BottomSheetDialog(insertActivity);
         nullInputBinding = DataBindingUtil.inflate(
                 LayoutInflater.from(insertActivity),
@@ -32,15 +40,15 @@ public class NullTitleOrNoteSheetActivity {
 
     private void onClickOk(){
         nullInputBinding.ok.setOnClickListener(v -> {
-            onDismissNullTitleOrNoteSheet();
+            onDismissNullTitleSheet();
         });
     }
 
-    public void onShowNullTitleOrNoteSheet(){
+    public void onShowNullTitleSheet(){
         bottomDialog.show();
     }
 
-    public void onDismissNullTitleOrNoteSheet(){
+    public void onDismissNullTitleSheet(){
         bottomDialog.dismiss();
     }
 

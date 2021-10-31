@@ -68,5 +68,16 @@ public class SearchActivityTest {
         });
     }
 
-    @
+    @Test
+    public void getSearchedNotesTest(){
+        searchTestRule.getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                searchTestRule.getActivity().getSearchedNotes();
+                assertNotNull(searchTestRule.getActivity().getNotesData());
+                assertNotNull(searchTestRule.getActivity().getNotesAdapter());
+            }
+        });
+    }
+
 }

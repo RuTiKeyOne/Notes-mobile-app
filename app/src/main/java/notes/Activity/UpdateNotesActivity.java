@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 
 import com.notes.R;
 import com.notes.databinding.ActivityUpdateNotesBinding;
@@ -31,11 +32,40 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
     private String notes;
     private int priorityLevel;
 
+    public ActivityUpdateNotesBinding getUpdateBinding() {
+        return updateBinding;
+    }
+
+    public NotesViewModel getNotesViewModel() {
+        return notesViewModel;
+    }
+
+    public BaseUpdateCommand getChangePriorityCommand() {
+        return changePriorityCommand;
+    }
+
+    public DeleteBottomSheetActivity getBottomSheetActivity() {
+        return bottomSheetActivity;
+    }
+
+    public Notes getNote() {
+        return note;
+    }
+
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public int getPriorityLevel() {
+        return priorityLevel;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initializationComponents();
-        initializationViewComponents();
+        initializationComponentsView();
         setInitialDataView();
         getUpdatedDataWithInput();
         onBackClick();
@@ -47,7 +77,7 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
 
     }
 
-    private void initializationComponents() {
+    public void initializationComponents() {
         bottomSheetActivity = new DeleteBottomSheetActivity(UpdateNotesActivity.this, this);
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
         note = (Notes) getIntent().getSerializableExtra(NOTE_INTENT_KEY);
@@ -57,26 +87,26 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
         changePriorityCommand = new HighUpdatePriorityCommand();
     }
 
-    private void initializationViewComponents() {
+    public void initializationComponentsView() {
         updateBinding = DataBindingUtil.setContentView(this, R.layout.activity_update_notes);
         changePriorityCommand.getPriorityViewWithData(note.getNotesPriority(), updateBinding);
     }
 
-    private void setInitialDataView() {
+    public void setInitialDataView() {
         if (note != null) {
             updateBinding.setTitle(note.notesTitle);
             updateBinding.setNotes(note.notes);
         }
     }
 
-    private void updatedNote() {
+    public void updatedNote() {
         updateBinding.updateNotesButton.setOnClickListener(v -> {
             notesViewModel.updateNote(getUpdatedNote());
             finish();
         });
     }
 
-    private Notes getUpdatedNote() {
+    public Notes getUpdatedNote() {
         Notes updatedNote = this.note;
         updatedNote.setNotesTitle(title);
         updatedNote.setNotes(notes);

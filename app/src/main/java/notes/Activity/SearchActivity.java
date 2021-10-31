@@ -102,7 +102,7 @@ public class SearchActivity extends TempDataActivity {
     }
 
 
-    private void getSearchedNotes() {
+    public void getSearchedNotes() {
         List<Notes> oldNotes = new ArrayList<>();
         oldNotes.addAll(notesData);
         notesData.clear();

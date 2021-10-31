@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.util.Log;
 
 import notes.Command.PriorityCommand.Child.InsertPriorityCommand.*;
 import notes.Command.PriorityCommand.Parent.BasePriorityCommand;
@@ -23,7 +22,7 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
     private ActivityInsertNotesBinding insertBinding;
     private NotesViewModel notesViewModel;
     private BasePriorityCommand priorityCommand;
-    private NullTitleOrNoteSheetActivity nullActivity;
+    private NullTitleSheetActivity nullActivity;
     private int priorityLevel;
     private String title;
     private String notes;
@@ -44,7 +43,7 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
         return priorityLevel;
     }
 
-    public NullTitleOrNoteSheetActivity getNullActivity() {
+    public NullTitleSheetActivity getNullActivity() {
         return nullActivity;
     }
 
@@ -66,7 +65,7 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
         priorityCommand = new HighInsertPriorityCommand();
         priorityLevel = priorityCommand.getPriorityLevel();
-        nullActivity = new NullTitleOrNoteSheetActivity(this);
+        nullActivity = new NullTitleSheetActivity(this);
     }
 
     public void initializationViewComponents() {
@@ -109,7 +108,7 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
             if (isTitleNotEmpty()) {
                 createNote(getNotesData());
             } else {
-                nullActivity.onShowNullTitleOrNoteSheet();
+                nullActivity.onShowNullTitleSheet();
             }
         });
     }
