@@ -13,7 +13,6 @@ public class SetMediumPriorityCommand extends BaseSetViewCommand {
         if(dataBinding instanceof ItemNotesBinding){
             ItemNotesBinding notesBinding = (ItemNotesBinding) dataBinding;
             notesBinding.notesPriority.setBackgroundResource(R.drawable.yellow_shape);
-
         }
     }
 }

@@ -18,7 +18,7 @@ import notes.ViewModel.NotesViewModel;
 
 public class TempDataActivity extends AppCompatActivity implements EditNoteListener, OpenDetailBottomSheetListener {
 
-    protected DetailsBottomSheetActivity detailsActivity;
+    public DetailsBottomSheetActivity detailsActivity;
     public static final String NOTES_DATA_KEY = "NOTES_DATA";
 
 
