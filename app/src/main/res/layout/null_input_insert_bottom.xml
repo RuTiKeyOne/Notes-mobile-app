@@ -19,6 +19,7 @@
             android:background="@drawable/detele_indictor_shape"/>
 
         <TextView
+            android:id="@+id/nullTitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/null_title"

@@ -38,7 +38,7 @@ public class NullTitleSheetActivity {
         bottomDialog.setContentView(nullInputBinding.getRoot());
     }
 
-    private void onClickOk(){
+    public void onClickOk(){
         nullInputBinding.ok.setOnClickListener(v -> {
             onDismissNullTitleSheet();
         });

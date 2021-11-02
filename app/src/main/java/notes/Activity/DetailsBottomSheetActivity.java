@@ -18,13 +18,29 @@ public class DetailsBottomSheetActivity{
     private BottomSheetDialog bottomDialog;
     private DetailsNoteSheetBinding detailsBinding;
 
+    public Notes getNote() {
+        return note;
+    }
+
+    public EditNoteListener getListener() {
+        return listener;
+    }
+
+    public BottomSheetDialog getBottomDialog() {
+        return bottomDialog;
+    }
+
+    public DetailsNoteSheetBinding getDetailsBinding() {
+        return detailsBinding;
+    }
+
     public DetailsBottomSheetActivity(TempDataActivity activity) {
         initializationComponents(activity);
         onClickedEdit();
         onCancelDialog();
     }
 
-    private void initializationComponents(TempDataActivity activity){
+    public void initializationComponents(TempDataActivity activity){
         bottomDialog = new BottomSheetDialog(activity);
         detailsBinding = DataBindingUtil.inflate(
                 LayoutInflater.from(activity),
@@ -59,7 +75,7 @@ public class DetailsBottomSheetActivity{
         bottomDialog.show();
     }
 
-    private void onSetInitialDataInView(Notes note){
+    public void onSetInitialDataInView(Notes note){
         this.note = note;
         detailsBinding.setTitle(this.note.getNotesTitle());
         detailsBinding.setDate(this.note.getNotesDate());

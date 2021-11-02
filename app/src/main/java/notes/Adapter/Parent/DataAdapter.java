@@ -20,6 +20,22 @@ public class DataAdapter<TypeData , Data extends List<TypeData>> extends Recycle
     protected BaseAdapterCommand adapterCommand;
     private int idLayout;
 
+    public Data getData() {
+        return data;
+    }
+
+    public LayoutInflater getLayoutInflater() {
+        return layoutInflater;
+    }
+
+    public BaseAdapterCommand getAdapterCommand() {
+        return adapterCommand;
+    }
+
+    public int getIdLayout() {
+        return idLayout;
+    }
+
     public DataAdapter(Data data, BaseAdapterCommand adapterCommand, int idLayout) {
         this.data = data;
         this.adapterCommand = adapterCommand;
@@ -39,7 +55,6 @@ public class DataAdapter<TypeData , Data extends List<TypeData>> extends Recycle
 
     @Override
     public void onBindViewHolder(@NonNull DataViewHolder holder, int position) {
-
         holder.bindData(data.get(position));
     }
 

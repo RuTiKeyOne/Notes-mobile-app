@@ -15,13 +15,25 @@ public class DeleteBottomSheetActivity{
     private BottomSheetDialog bottomDialog;
     private DeleteBottomSheetBinding deleteBinding;
 
+    public DeleteNoteListener getDeleteListener() {
+        return deleteListener;
+    }
+
+    public BottomSheetDialog getBottomDialog() {
+        return bottomDialog;
+    }
+
+    public DeleteBottomSheetBinding getDeleteBinding() {
+        return deleteBinding;
+    }
+
     public DeleteBottomSheetActivity(UpdateNotesActivity updateActivity, DeleteNoteListener deleteListener) {
         initializationComponents(updateActivity, deleteListener);
         addOnYesClicked();
         addOnNoClicked();
     }
 
-    private void initializationComponents(UpdateNotesActivity updateActivity, DeleteNoteListener listener){
+    public void initializationComponents(UpdateNotesActivity updateActivity, DeleteNoteListener listener){
         deleteListener = listener;
         bottomDialog = new BottomSheetDialog(updateActivity);
         deleteBinding = DataBindingUtil.inflate(
@@ -47,7 +59,6 @@ public class DeleteBottomSheetActivity{
     }
 
     public void onShowDeleteBottomSheet(){
-
         bottomDialog.show();
     }
 
