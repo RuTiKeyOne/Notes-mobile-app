@@ -124,7 +124,7 @@
                 android:gravity="start"
                 android:hint="@string/notes"
                 android:padding="15dp" />
- 
+
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/doneNotesButton"
