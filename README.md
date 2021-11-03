@@ -26,10 +26,6 @@ Notes is an application for taking notes developed for the android operating sys
 * Edit note
 * Search note by title
 
-## About project files
-
-More information about the project files is described [here.]()
-
 ## Development Setup
 
 Before you begin, you should have already downloaded the Android Studio SDK and set it up correctly. You can find a guide on how to do this here: [Setting up Android Studio.](http://developer.android.com/sdk/installing/index.html?pkg=studio)
@@ -46,3 +42,7 @@ Before you begin, you should have already downloaded the Android Studio SDK and 
 5. Let Android Studio import the project.
 
 6. Build the application in your device by clicking run button.
+
+## Wiki
+
+View the [wiki]() to see pages that provide details on the project.
