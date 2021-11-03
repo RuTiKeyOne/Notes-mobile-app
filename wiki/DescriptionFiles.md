@@ -15,3 +15,8 @@ Model | Contains the class required to get and add record data to the database a
 Repository | Contains a class that implements the logic of intermediate data retrieval (ViewModel-notesrepository-NotesDatabase) from the database.
 Utilities  | Contains classes containing general data and logic for a particular part of the application. 
 ViewModel | Contains the viewmodel classes needed to implement the mvvm pattern.
+notes(androidTest) | Contains test classes that test the logic of the application, there are more than 100 of them in total and they all give a positive result.
+drawable | Contains resources used in the markup and application.
+font | Contains fonts used in application.
+layout | Contains view layout used in application.
+strings | Contains text variables, which are selected depending on the language installed on the device.
