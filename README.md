@@ -25,3 +25,24 @@ Notes is an application for taking notes developed for the android operating sys
 * Delete note 
 * Edit note
 * Search note by title
+
+## About project files
+
+More information about the project files is described [here.]()
+
+## Development Setup
+
+Before you begin, you should have already downloaded the Android Studio SDK and set it up correctly. You can find a guide on how to do this here: [Setting up Android Studio.](http://developer.android.com/sdk/installing/index.html?pkg=studio)
+
+## Building the Code
+
+1. Clone the repository using HTTP: git clone https://github.com/RuTiKeyOne/Notes-mobile-app
+2. Open Android Studio.
+
+3. Click on 'Open an existing Android Studio project'
+
+4. Browse to the directory where you cloned the mobile-wallet repo and click OK.
+
+5. Let Android Studio import the project.
+
+6. Build the application in your device by clicking run button.
