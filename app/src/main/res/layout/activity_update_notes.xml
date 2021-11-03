@@ -29,9 +29,9 @@
         tools:context="com.notes.Activity.InsertNotesActivity">
 
         <LinearLayout
+            android:id="@+id/layoutHeader"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:id="@+id/layoutHeader"
             android:background="@color/red"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -42,8 +42,8 @@
                 android:id="@+id/editImageBack"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:padding="4dp"
                 android:contentDescription="@string/app_name"
+                android:padding="4dp"
                 android:src="@drawable/ic_back_arrow"
                 app:tint="@color/white" />
 
@@ -60,17 +60,17 @@
                 android:maxLines="1"
                 android:text="@string/edit_note"
                 android:textColor="@color/white"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <ImageView
+                android:id="@+id/imageDelete"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:id="@+id/imageDelete"
                 android:layout_marginEnd="8dp"
                 android:contentDescription="@string/app_name"
                 android:padding="4dp"
                 android:src="@drawable/ic_delete"
-                app:tint="@color/white"/>
+                app:tint="@color/white" />
 
         </LinearLayout>
 
@@ -137,24 +137,21 @@
 
             </LinearLayout>
 
-            <ScrollView
+
+            <EditText
+                android:id="@+id/inputData"
+                style="@style/InsertItemMargin"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:fillViewport="true">
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/edit_text_background"
+                android:fontFamily="@font/product_sans_regular"
+                android:gravity="bottom"
+                android:hint="@string/notes"
+                android:scrollbars="vertical"
+                android:padding="15dp"
+                android:text="@{notes}" />
 
-                <EditText
-                    android:id="@+id/inputData"
-                    style="@style/InsertItemMargin"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:background="@drawable/edit_text_background"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:gravity="start"
-                    android:hint="@string/notes"
-                    android:padding="15dp"
-                    android:text="@{notes}" />
-
-            </ScrollView>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/updateNotesButton"

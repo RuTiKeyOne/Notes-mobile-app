@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.text.method.ScrollingMovementMethod;
 
 import notes.Command.PriorityCommand.Child.InsertPriorityCommand.*;
 import notes.Command.PriorityCommand.Parent.BasePriorityCommand;
@@ -70,6 +71,8 @@ public class InsertNotesActivity extends AppCompatActivity implements onChangePr
 
     public void initializationViewComponents() {
         insertBinding = DataBindingUtil.setContentView(this, R.layout.activity_insert_notes);
+        insertBinding.notesTitle.setMovementMethod(new ScrollingMovementMethod());
+        insertBinding.notesData.setMovementMethod(new ScrollingMovementMethod());
     }
 
     public void onBackClick(){

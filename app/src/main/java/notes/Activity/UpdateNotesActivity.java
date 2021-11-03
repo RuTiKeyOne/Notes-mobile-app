@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 
 import com.notes.R;
@@ -90,6 +91,8 @@ public class UpdateNotesActivity extends AppCompatActivity implements DeleteNote
     public void initializationComponentsView() {
         updateBinding = DataBindingUtil.setContentView(this, R.layout.activity_update_notes);
         changePriorityCommand.getPriorityViewWithData(note.getNotesPriority(), updateBinding);
+        updateBinding.inputTitle.setMovementMethod(new ScrollingMovementMethod());
+        updateBinding.inputData.setMovementMethod(new ScrollingMovementMethod());
     }
 
     public void setInitialDataView() {
