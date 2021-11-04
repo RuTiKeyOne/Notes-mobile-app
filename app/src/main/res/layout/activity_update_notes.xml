@@ -146,7 +146,7 @@
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/edit_text_background"
                 android:fontFamily="@font/product_sans_regular"
-                android:gravity="bottom"
+                android:gravity="start"
                 android:hint="@string/notes"
                 android:scrollbars="vertical"
                 android:padding="15dp"
