@@ -32,7 +32,7 @@ Before you begin, you should have already downloaded the Android Studio SDK and 
 
 ## Building the Code
 
-1. Clone the repository using HTTP: git clone https://github.com/RuTiKeyOne/NotesMobileApp
+1. Clone the repository using HTTP: git clone https://github.com/RuTiKeyOne/Notes
 2. Open Android Studio.
 
 3. Click on 'Open an existing Android Studio project'
