@@ -5,15 +5,15 @@ Notes is an application for taking notes developed for the android operating sys
 ## Screenshots
 
 <p align="center">
-  <img src="https://i.ibb.co/ZMJ0Nj6/1.png" width="180"/>
-  <img src="https://i.ibb.co/khZ7fMH/3.png" width="180"/>
-  <img src="https://i.ibb.co/vH3qXMR/4.png" width="180"/>
+  <img src="https://github.com/RuTiKeyOne/Notes/blob/main/wiki/Screenshots/1.png" width="180"/>
+  <img src="https://github.com/RuTiKeyOne/Notes/blob/main/wiki/Screenshots/2.png" width="180"/>
+  <img src="https://github.com/RuTiKeyOne/Notes/blob/main/wiki/Screenshots/3.png" width="180"/>
 </p>
 
 <p align="center">
-   <img src="https://i.ibb.co/DKc3tyG/6.png" width="180"/> 
-  <img src="https://i.ibb.co/mX3hFrx/7.png" width="180"/>
-  <img src="https://i.ibb.co/7bw4ZmR/8.png" width="180"/>
+   <img src="https://github.com/RuTiKeyOne/Notes/blob/main/wiki/Screenshots/4.png" width="180"/> 
+  <img src="https://github.com/RuTiKeyOne/Notes/blob/main/wiki/Screenshots/5.png" width="180"/>
+  <img src="https://github.com/RuTiKeyOne/Notes/blob/main/wiki/Screenshots/6.png" width="180"/>
 </p>
 
 ## What functionality does the application provide to the user?
