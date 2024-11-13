@@ -1,6 +1,14 @@
-# Notes mobile application for Android
+![GitHub](https://img.shields.io/github/license/IgorVolochay/Face-recognition?style=flat-square&color=blue) &nbsp;
+# Notes
 
+## Description 
 Notes is an application for taking notes developed for the android operating system.
+
+## Features
+* `Add note`;
+* `Delete note`; 
+* `Edit note`;
+* `Search note by title`.
 
 ## Screenshots
 
@@ -15,14 +23,6 @@ Notes is an application for taking notes developed for the android operating sys
   <img src="https://github.com/RuTiKeyOne/Notes/blob/main/wiki/Screenshots/5.png" width="180"/>
   <img src="https://github.com/RuTiKeyOne/Notes/blob/main/wiki/Screenshots/6.png" width="180"/>
 </p>
-
-## What functionality does the application provide to the user?
-
-### The user can:
-* Add note
-* Delete note 
-* Edit note
-* Search note by title
 
 ## Development Setup
 
