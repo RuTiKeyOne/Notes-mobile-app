@@ -12,13 +12,13 @@ Notes is an application for taking notes developed for the android operating sys
 
 ## Screenshots
 
-<p align="center">
+<p align="start">
   <img src="https://github.com/RuTiKeyOne/Notes/blob/main/wiki/Screenshots/1.png" width="180"/>
   <img src="https://github.com/RuTiKeyOne/Notes/blob/main/wiki/Screenshots/2.png" width="180"/>
   <img src="https://github.com/RuTiKeyOne/Notes/blob/main/wiki/Screenshots/3.png" width="180"/>
 </p>
 
-<p align="center">
+<p align="start">
    <img src="https://github.com/RuTiKeyOne/Notes/blob/main/wiki/Screenshots/4.png" width="180"/> 
   <img src="https://github.com/RuTiKeyOne/Notes/blob/main/wiki/Screenshots/5.png" width="180"/>
   <img src="https://github.com/RuTiKeyOne/Notes/blob/main/wiki/Screenshots/6.png" width="180"/>
@@ -29,17 +29,12 @@ Notes is an application for taking notes developed for the android operating sys
 Before you begin, you should have already downloaded the Android Studio SDK and set it up correctly. You can find a guide on how to do this here: [Setting up Android Studio.](http://developer.android.com/sdk/installing/index.html?pkg=studio)
 
 ## Building the Code
-
-1. Clone the repository using HTTP: git clone https://github.com/RuTiKeyOne/Notes
-2. Open Android Studio.
-
-3. Click on 'Open an existing Android Studio project'
-
-4. Browse to the directory where you cloned the mobile-wallet repo and click OK.
-
-5. Let Android Studio import the project.
-
-6. Build the application in your device by clicking run button.
+* `Clone the repository using HTTP: git clone https://github.com/rutikeyone/notes`;
+* `Open Android Studio/Visual Studio Code`;
+* `Click on 'Open the project folder`;
+* `Browse to the directory where you cloned the mobile-wallet repo and click OK`;
+* `Let Android Studio/Visual Studio Code import the project`;
+* `Build the application in your device by clicking run button`.
 
 ## Wiki
 
